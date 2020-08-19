@@ -1,0 +1,9 @@
+use_frameworks!
+
+target 'SwiftModulesDemo' do
+
+  pod 'SwiftModules', :path => '../'
+
+end
+
+

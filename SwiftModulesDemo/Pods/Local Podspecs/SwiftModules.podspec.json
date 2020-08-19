@@ -1,0 +1,33 @@
+{
+  "name": "SwiftModules",
+  "version": "0.1.0",
+  "summary": "关于iOS Swift的一些模块私有库.",
+  "description": "Include \"分类，网络请求，工具方法\", Support the Objective - C language.",
+  "homepage": "https://github.com/aichiko0225/SwiftModules",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "ash": "aichiko66@163.com"
+  },
+  "source": {
+    "git": "https://github.com/aichiko0225/SwiftModules.git",
+    "tag": "0.1.0"
+  },
+  "social_media_url": "https://github.com/aichiko0225",
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "SwiftModules/Classes/**/*",
+  "swift_versions": [
+    "5.0",
+    "4.0",
+    "4.2"
+  ],
+  "frameworks": [
+    "Foundation",
+    "UIKit"
+  ],
+  "swift_version": "5.0"
+}
