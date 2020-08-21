@@ -1,6 +1,6 @@
 //
-//  EZSwiftFunctions.swift
-//  EZSwiftExtensions
+//  SwiftFunctions.swift
+//  SwiftExtensions
 //
 //  Created by Goktug Yilmaz on 13/07/15.
 //  Copyright (c) 2015 Goktug Yilmaz. All rights reserved.
@@ -11,7 +11,7 @@
 import Foundation
 
 public struct cc {
-    /// EZSE: Returns app's name
+    /// Returns app's name
     public static var appDisplayName: String? {
         if let bundleDisplayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String {
             return bundleDisplayName
@@ -22,22 +22,22 @@ public struct cc {
         return nil
     }
 
-    /// EZSE: Returns app's version number
+    /// Returns app's version number
     public static var appVersion: String? {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     }
 
-    /// EZSE: Return app's build number
+    /// Return app's build number
     public static var appBuild: String? {
         return Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String
     }
 
-    /// EZSE: Return app's bundle ID
+    /// Return app's bundle ID
     public static var appBundleID: String? {
         return Bundle.main.bundleIdentifier
     }
 
-    /// EZSE: Returns both app's version and build numbers "v0.3(7)"
+    /// Returns both app's version and build numbers "v0.3(7)"
     public static var appVersionAndBuild: String? {
         if appVersion != nil && appBuild != nil {
             if appVersion == appBuild {
@@ -49,7 +49,7 @@ public struct cc {
         return nil
     }
 
-    /// EZSE: Return device version ""
+    /// Return device version ""
     public static var deviceVersion: String {
         var size: Int = 0
         sysctlbyname("hw.machine", nil, &size, nil, 0)
@@ -58,7 +58,7 @@ public struct cc {
         return String(cString: machine)
     }
 
-    /// EZSE: Returns true if DEBUG mode is active //TODO: Add to readme
+    /// Returns true if DEBUG mode is active //TODO: Add to readme
     public static var isDebug: Bool {
     #if DEBUG
         return true
@@ -67,7 +67,7 @@ public struct cc {
     #endif
     }
 
-    /// EZSE: Returns true if RELEASE mode is active //TODO: Add to readme
+    /// Returns true if RELEASE mode is active //TODO: Add to readme
     public static var isRelease: Bool {
     #if DEBUG
         return false
@@ -76,7 +76,7 @@ public struct cc {
     #endif
     }
 
-    /// EZSE: Returns true if its simulator and not a device //TODO: Add to readme
+    /// Returns true if its simulator and not a device //TODO: Add to readme
     public static var isSimulator: Bool {
     #if targetEnvironment(simulator)
         return true
@@ -85,7 +85,7 @@ public struct cc {
     #endif
     }
 
-    /// EZSE: Returns true if its on a device and not a simulator //TODO: Add to readme
+    /// Returns true if its on a device and not a simulator //TODO: Add to readme
     public static var isDevice: Bool {
     #if targetEnvironment(simulator)
         return false
@@ -95,7 +95,7 @@ public struct cc {
     }
     
     #if !os(macOS)
-    /// EZSE: Returns true if app is running in test flight mode
+    /// Returns true if app is running in test flight mode
     /// Acquired from : http://stackoverflow.com/questions/12431994/detect-testflight
     public static var isInTestFlight: Bool {
         return Bundle.main.appStoreReceiptURL?.path.contains("sandboxReceipt") == true 
@@ -104,30 +104,30 @@ public struct cc {
 
     #if os(iOS) || os(tvOS)
 
-    /// EZSE: Returns the top ViewController
+    /// Returns the top ViewController
     public static var topMostVC: UIViewController? {
         let topVC = UIApplication.topViewController()
         if topVC == nil {
-            print("EZSwiftExtensions Error: You don't have any views set. You may be calling them in viewDidLoad. Try viewDidAppear instead.")
+            print("SwiftExtensions Error: You don't have any views set. You may be calling them in viewDidLoad. Try viewDidAppear instead.")
         }
         return topVC
     }
 
     #if os(iOS)
 
-    /// EZSE: Returns current screen orientation
+    /// Returns current screen orientation
     public static var screenOrientation: UIInterfaceOrientation {
         return UIApplication.shared.statusBarOrientation
     }
 
     #endif
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public static var horizontalSizeClass: UIUserInterfaceSizeClass {
         return self.topMostVC?.traitCollection.horizontalSizeClass ?? UIUserInterfaceSizeClass.unspecified
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public static var verticalSizeClass: UIUserInterfaceSizeClass {
         return self.topMostVC?.traitCollection.verticalSizeClass ?? UIUserInterfaceSizeClass.unspecified
     }
@@ -136,7 +136,7 @@ public struct cc {
     
     #if os(iOS) || os(tvOS)
 
-    /// EZSE: Returns screen width
+    /// Returns screen width
     public static var screenWidth: CGFloat {
 
         #if os(iOS)
@@ -154,7 +154,7 @@ public struct cc {
         #endif
     }
 
-    /// EZSE: Returns screen height
+    /// Returns screen height
     public static var screenHeight: CGFloat {
 
         #if os(iOS)
@@ -176,12 +176,12 @@ public struct cc {
 
     #if os(iOS)
 
-    /// EZSE: Returns StatusBar height
+    /// Returns StatusBar height
     public static var screenStatusBarHeight: CGFloat {
         return UIApplication.shared.statusBarFrame.height
     }
 
-    /// EZSE: Return screen's height without StatusBar
+    /// Return screen's height without StatusBar
     public static var screenHeightWithoutStatusBar: CGFloat {
         if screenOrientation.isPortrait {
             return UIScreen.main.bounds.size.height - screenStatusBarHeight
@@ -192,14 +192,14 @@ public struct cc {
 
     #endif
 
-    /// EZSE: Returns the locale country code. An example value might be "ES". //TODO: Add to readme
+    /// Returns the locale country code. An example value might be "ES". //TODO: Add to readme
     public static var currentRegion: String? {
         return (Locale.current as NSLocale).object(forKey: NSLocale.Key.countryCode) as? String
     }
     
     #if os(iOS) || os(tvOS)
 
-    /// EZSE: Calls action when a screen shot is taken
+    /// Calls action when a screen shot is taken
     public static func detectScreenShot(_ action: @escaping () -> Void) {
         let mainQueue = OperationQueue.main
         _ = NotificationCenter.default.addObserver(forName: UIApplication.userDidTakeScreenshotNotification, object: nil, queue: mainQueue) { _ in
@@ -211,7 +211,7 @@ public struct cc {
     #endif
 
     //TODO: Document this, add tests to this
-    /// EZSE: Iterates through enum elements, use with (for element in ez.iterateEnum(myEnum))
+    /// Iterates through enum elements, use with (for element in ez.iterateEnum(myEnum))
     /// http://stackoverflow.com/questions/24007461/how-to-enumerate-an-enum-with-string-type
     public static func iterateEnum<T: Hashable>(_: T.Type) -> AnyIterator<T> {
         var i = 0
@@ -225,35 +225,35 @@ public struct cc {
 
     // MARK: - Dispatch
 
-    /// EZSE: Runs the function after x seconds
+    /// Runs the function after x seconds
     public static func dispatchDelay(_ second: Double, closure:@escaping () -> Void) {
         DispatchQueue.main.asyncAfter(
             deadline: DispatchTime.now() + Double(Int64(second * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
     }
 
-    /// EZSE: Runs function after x seconds
+    /// Runs function after x seconds
     public static func runThisAfterDelay(seconds: Double, after: @escaping () -> Void) {
         runThisAfterDelay(seconds: seconds, queue: DispatchQueue.main, after: after)
     }
 
     //TODO: Make this easier
-    /// EZSE: Runs function after x seconds with dispatch_queue, use this syntax: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0)
+    /// Runs function after x seconds with dispatch_queue, use this syntax: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0)
     public static func runThisAfterDelay(seconds: Double, queue: DispatchQueue, after: @escaping () -> Void) {
         let time = DispatchTime.now() + Double(Int64(seconds * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         queue.asyncAfter(deadline: time, execute: after)
     }
 
-    /// EZSE: Submits a block for asynchronous execution on the main queue
+    /// Submits a block for asynchronous execution on the main queue
     public static func runThisInMainThread(_ block: @escaping () -> Void) {
         DispatchQueue.main.async(execute: block)
     }
 
-    /// EZSE: Runs in Default priority queue
+    /// Runs in Default priority queue
     public static func runThisInBackground(_ block: @escaping () -> Void) {
         DispatchQueue.global(qos: .default).async(execute: block)
     }
 
-    /// EZSE: Runs every second, to cancel use: timer.invalidate()
+    /// Runs every second, to cancel use: timer.invalidate()
     @discardableResult public static func runThisEvery(
         seconds: TimeInterval,
         startAfterSeconds: TimeInterval,

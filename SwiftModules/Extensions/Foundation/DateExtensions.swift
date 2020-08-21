@@ -1,6 +1,6 @@
 //
 //  DateExtensions.swift
-//  EZSwiftExtensions
+//  SwiftExtensions
 //
 //  Created by Goktug Yilmaz on 15/07/15.
 //  Copyright (c) 2015 Goktug Yilmaz. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// EZSE: This Date Formatter Manager help to cache already created formatter in a synchronized Dictionary to use them in future, helps in performace improvement.
+/// This Date Formatter Manager help to cache already created formatter in a synchronized Dictionary to use them in future, helps in performace improvement.
 
 class DateFormattersManager {
     public static var dateFormatters: SynchronizedDictionary = SynchronizedDictionary<String, DateFormatter>()
@@ -18,7 +18,7 @@ extension Date {
     
     public static let minutesInAWeek = 24 * 60 * 7
     
-    /// EZSE: Initializes Date from string and format
+    /// Initializes Date from string and format
     public init?(fromString string: String,
                  format: String,
                  timezone: TimeZone = TimeZone.autoupdatingCurrent,
@@ -43,7 +43,7 @@ extension Date {
         }
     }
     
-    /// EZSE: Initializes Date from string returned from an http response, according to several RFCs / ISO
+    /// Initializes Date from string returned from an http response, according to several RFCs / ISO
     public init?(httpDateString: String) {
         if let rfc1123 = Date(fromString: httpDateString, format: "EEE',' dd' 'MMM' 'yyyy HH':'mm':'ss zzz") {
             self = rfc1123
@@ -76,7 +76,7 @@ extension Date {
         return nil
     }
     
-    /// EZSE: Converts Date to String
+    /// Converts Date to String
     public func toString(dateStyle: DateFormatter.Style = .medium, timeStyle: DateFormatter.Style = .medium) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = dateStyle
@@ -84,14 +84,14 @@ extension Date {
         return formatter.string(from: self)
     }
     
-    /// EZSE: Converts Date to String, with format
+    /// Converts Date to String, with format
     public func toString(format: String) -> String {
         
         let dateFormatter = getDateFormatter(for: format)
         return dateFormatter.string(from: self)
     }
     
-    /// EZSE: Use to get dateFormatter from synchronized Dict via dateFormatterManager
+    /// Use to get dateFormatter from synchronized Dict via dateFormatterManager
     private func getDateFormatter(for format: String) -> DateFormatter {
         
         var dateFormatter: DateFormatter?
@@ -104,7 +104,7 @@ extension Date {
         return dateFormatter!
     }
     
-    ///EZSE: CreateDateFormatter if formatter doesn't exist in Dict.
+    ///CreateDateFormatter if formatter doesn't exist in Dict.
     private func createDateFormatter(for format: String) -> DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = format
@@ -112,35 +112,35 @@ extension Date {
         return formatter
     }
     
-    /// EZSE: Calculates how many days passed from now to date
+    /// Calculates how many days passed from now to date
     public func daysInBetweenDate(_ date: Date) -> Double {
         var diff = self.timeIntervalSince1970 - date.timeIntervalSince1970
         diff = fabs(diff/86400)
         return diff
     }
     
-    /// EZSE: Calculates how many hours passed from now to date
+    /// Calculates how many hours passed from now to date
     public func hoursInBetweenDate(_ date: Date) -> Double {
         var diff = self.timeIntervalSince1970 - date.timeIntervalSince1970
         diff = fabs(diff/3600)
         return diff
     }
     
-    /// EZSE: Calculates how many minutes passed from now to date
+    /// Calculates how many minutes passed from now to date
     public func minutesInBetweenDate(_ date: Date) -> Double {
         var diff = self.timeIntervalSince1970 - date.timeIntervalSince1970
         diff = fabs(diff/60)
         return diff
     }
     
-    /// EZSE: Calculates how many seconds passed from now to date
+    /// Calculates how many seconds passed from now to date
     public func secondsInBetweenDate(_ date: Date) -> Double {
         var diff = self.timeIntervalSince1970 - date.timeIntervalSince1970
         diff = fabs(diff)
         return diff
     }
     
-    /// EZSE: Easy creation of time passed String. Can be Years, Months, days, hours, minutes or seconds
+    /// Easy creation of time passed String. Can be Years, Months, days, hours, minutes or seconds
     public func timePassed() -> String {
         let date = Date()
         let calendar = Calendar.autoupdatingCurrent
@@ -170,7 +170,7 @@ extension Date {
         }
     }
     
-    /// EZSE: Easy creation of time passed String. Can be Years, Months, days, hours, minutes or seconds. Useful for localization
+    /// Easy creation of time passed String. Can be Years, Months, days, hours, minutes or seconds. Useful for localization
     public func timePassed() -> TimePassed {
         
         let date = Date()
@@ -194,14 +194,14 @@ extension Date {
         }
     }
     
-    // EZSE: Check date if it is today
+    // Check date if it is today
     public var isToday: Bool {
         let format = "yyyy-MM-dd"
         let dateFormatter = getDateFormatter(for: format)
         return dateFormatter.string(from: self) == dateFormatter.string(from: Date())
     }
     
-    /// EZSE: Check date if it is yesterday
+    /// Check date if it is yesterday
     public var isYesterday: Bool {
         let format = "yyyy-MM-dd"
         let yesterDay = Calendar.current.date(byAdding: .day, value: -1, to: Date())
@@ -209,7 +209,7 @@ extension Date {
         return dateFormatter.string(from: self) == dateFormatter.string(from: yesterDay!)
     }
     
-    /// EZSE: Check date if it is tomorrow
+    /// Check date if it is tomorrow
     public var isTomorrow: Bool {
         let format = "yyyy-MM-dd"
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
@@ -218,74 +218,74 @@ extension Date {
         return dateFormatter.string(from: self) == dateFormatter.string(from: tomorrow!)
     }
     
-    /// EZSE: Check date if it is within this month.
+    /// Check date if it is within this month.
     public var isThisMonth: Bool {
         let today = Date()
         return self.month == today.month && self.year == today.year
     }
     
-    /// EZSE: Check date if it is within this week.
+    /// Check date if it is within this week.
     public var isThisWeek: Bool {
         return self.minutesInBetweenDate(Date()) <= Double(Date.minutesInAWeek)
     }
     
-    /// EZSE: Get the era from the date
+    /// Get the era from the date
     public var era: Int {
         return Calendar.current.component(Calendar.Component.era, from: self)
     }
     
-    /// EZSE : Get the year from the date
+    /// Get the year from the date
     public var year: Int {
         return Calendar.current.component(Calendar.Component.year, from: self)
     }
     
-    /// EZSE : Get the month from the date
+    /// Get the month from the date
     public var month: Int {
         return Calendar.current.component(Calendar.Component.month, from: self)
     }
     
-    /// EZSE : Get the weekday from the date
+    /// Get the weekday from the date
     public var weekday: String {
         let format = "EEEE"
         let dateFormatter = getDateFormatter(for: format)
         return dateFormatter.string(from: self)
     }
     
-    // EZSE : Get the month from the date
+    // Get the month from the date
     public var monthAsString: String {
         let format = "MMMM"
         let dateFormatter = getDateFormatter(for: format)
         return dateFormatter.string(from: self)
     }
     
-    // EZSE : Get the day from the date
+    // Get the day from the date
     public var day: Int {
         return Calendar.current.component(.day, from: self)
     }
     
-    /// EZSE: Get the hours from date
+    /// Get the hours from date
     public var hour: Int {
         return Calendar.current.component(.hour, from: self)
     }
     
-    /// EZSE: Get the minute from date
+    /// Get the minute from date
     public var minute: Int {
         return Calendar.current.component(.minute, from: self)
     }
     
-    /// EZSE: Get the second from the date
+    /// Get the second from the date
     public var second: Int {
         return Calendar.current.component(.second, from: self)
     }
     
-    /// EZSE : Gets the nano second from the date
+    /// Gets the nano second from the date
     public var nanosecond: Int {
         return Calendar.current.component(.nanosecond, from: self)
     }
     
     #if os(iOS) || os(tvOS)
     
-    /// EZSE : Gets the international standard(ISO8601) representation of date
+    /// Gets the international standard(ISO8601) representation of date
     @available(iOS 10.0, *)
     @available(tvOS 10.0, *)
     public var iso8601: String {

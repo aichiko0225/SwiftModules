@@ -1,6 +1,6 @@
 //
 //  IntExtensions.swift
-//  EZSwiftExtensions
+//  SwiftExtensions
 //
 //  Created by Goktug Yilmaz on 16/07/15.
 //  Copyright (c) 2015 Goktug Yilmaz. All rights reserved.
@@ -9,20 +9,20 @@
 import Foundation
 
 extension Int {
-    /// EZSE: Checks if the integer is even.
+    /// Checks if the integer is even.
     public var isEven: Bool { return (self % 2 == 0) }
 
-    /// EZSE: Checks if the integer is odd.
+    /// Checks if the integer is odd.
     public var isOdd: Bool { return (self % 2 != 0) }
 
-    /// EZSE: Checks if the integer is positive.
+    /// Checks if the integer is positive.
     public var isPositive: Bool { return (self > 0) }
 
-    /// EZSE: Checks if the integer is negative.
+    /// Checks if the integer is negative.
     public var isNegative: Bool { return (self < 0) }
 
 
-    /// EZSE: Returns number of digits in the integer.
+    /// Returns number of digits in the integer.
     public var digits: Int {
         if self == 0 {
             return 1
@@ -33,7 +33,7 @@ extension Int {
         }
     }
     
-    /// EZSE: Returns a random integer number in the range min...max, inclusive.
+    /// Returns a random integer number in the range min...max, inclusive.
     public static func random(within: Range<Int>) -> Int {
         let delta = within.upperBound - within.lowerBound
         return within.lowerBound + Int(arc4random_uniform(UInt32(delta)))
@@ -41,10 +41,10 @@ extension Int {
 }
 
 extension UInt {
-    /// EZSE: Convert UInt to Int
+    /// Convert UInt to Int
     public var toInt: Int { return Int(self) }
     
-    /// EZSE: Greatest common divisor of two integers using the Euclid's algorithm.
+    /// Greatest common divisor of two integers using the Euclid's algorithm.
     /// Time complexity of this in O(log(n))
     public static func gcd(_ firstNum: UInt, _ secondNum: UInt) -> UInt {
         let remainder = firstNum % secondNum
@@ -55,7 +55,7 @@ extension UInt {
         }
     }
     
-    /// EZSE: Least common multiple of two numbers. LCM = n * m / gcd(n, m)
+    /// Least common multiple of two numbers. LCM = n * m / gcd(n, m)
     public static func lcm(_ firstNum: UInt, _ secondNum: UInt) -> UInt {
         return firstNum * secondNum / UInt.gcd(firstNum, secondNum)
     }

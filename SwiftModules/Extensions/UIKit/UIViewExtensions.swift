@@ -1,6 +1,6 @@
 //
 //  UIViewExtensions.swift
-//  EZSwiftExtensions
+//  SwiftExtensions
 //
 //  Created by Goktug Yilmaz on 15/07/15.
 //  Copyright (c) 2015 Goktug Yilmaz. All rights reserved.
@@ -13,7 +13,7 @@ import UIKit
 // MARK: Frame Extensions
 extension UIView {
 
-    /// EZSE: add multiple subviews
+    /// add multiple subviews
     public func addSubviews(_ views: [UIView]) {
         views.forEach { [weak self] eachView in
             self?.addSubview(eachView)
@@ -21,7 +21,7 @@ extension UIView {
     }
 
     //TODO: Add pics to readme
-    /// EZSE: resizes this view so it fits the largest subview
+    /// resizes this view so it fits the largest subview
     public func resizeToFitSubviews() {
         var width: CGFloat = 0
         var height: CGFloat = 0
@@ -35,7 +35,7 @@ extension UIView {
         frame = CGRect(x: x, y: y, width: width, height: height)
     }
 
-    /// EZSE: resizes this view so it fits the largest subview
+    /// resizes this view so it fits the largest subview
     public func resizeToFitSubviews(_ tagsToIgnore: [Int]) {
         var width: CGFloat = 0
         var height: CGFloat = 0
@@ -51,21 +51,21 @@ extension UIView {
         frame = CGRect(x: x, y: y, width: width, height: height)
     }
 
-    /// EZSE: resizes this view so as to fit its width.
+    /// resizes this view so as to fit its width.
     public func resizeToFitWidth() {
         let currentHeight = self.h
         self.sizeToFit()
         self.h = currentHeight
     }
 
-    /// EZSE: resizes this view so as to fit its height.
+    /// resizes this view so as to fit its height.
     public func resizeToFitHeight() {
         let currentWidth = self.w
         self.sizeToFit()
         self.w = currentWidth
     }
 
-    /// EZSE: getter and setter for the x coordinate of the frame's origin for the view.
+    /// getter and setter for the x coordinate of the frame's origin for the view.
     public var x: CGFloat {
         get {
             return self.frame.origin.x
@@ -74,7 +74,7 @@ extension UIView {
         }
     }
 
-    /// EZSE: getter and setter for the y coordinate of the frame's origin for the view.
+    /// getter and setter for the y coordinate of the frame's origin for the view.
     public var y: CGFloat {
         get {
             return self.frame.origin.y
@@ -83,7 +83,7 @@ extension UIView {
         }
     }
 
-    /// EZSE: variable to get the width of the view.
+    /// variable to get the width of the view.
     public var w: CGFloat {
         get {
             return self.frame.size.width
@@ -92,7 +92,7 @@ extension UIView {
         }
     }
 
-    /// EZSE: variable to get the height of the view.
+    /// variable to get the height of the view.
     public var h: CGFloat {
         get {
             return self.frame.size.height
@@ -101,7 +101,7 @@ extension UIView {
         }
     }
 
-    /// EZSE: getter and setter for the x coordinate of leftmost edge of the view.
+    /// getter and setter for the x coordinate of leftmost edge of the view.
     public var left: CGFloat {
         get {
             return self.x
@@ -110,7 +110,7 @@ extension UIView {
         }
     }
 
-    /// EZSE: getter and setter for the x coordinate of the rightmost edge of the view.
+    /// getter and setter for the x coordinate of the rightmost edge of the view.
     public var right: CGFloat {
         get {
             return self.x + self.w
@@ -119,7 +119,7 @@ extension UIView {
         }
     }
 
-    /// EZSE: getter and setter for the y coordinate for the topmost edge of the view.
+    /// getter and setter for the y coordinate for the topmost edge of the view.
     public var top: CGFloat {
         get {
             return self.y
@@ -128,7 +128,7 @@ extension UIView {
         }
     }
 
-    /// EZSE: getter and setter for the y coordinate of the bottom most edge of the view.
+    /// getter and setter for the y coordinate of the bottom most edge of the view.
     public var bottom: CGFloat {
         get {
             return self.y + self.h
@@ -137,7 +137,7 @@ extension UIView {
         }
     }
 
-    /// EZSE: getter and setter the frame's origin point of the view.
+    /// getter and setter the frame's origin point of the view.
     public var origin: CGPoint {
         get {
             return self.frame.origin
@@ -146,7 +146,7 @@ extension UIView {
         }
     }
 
-    /// EZSE: getter and setter for the X coordinate of the center of a view.
+    /// getter and setter for the X coordinate of the center of a view.
     public var centerX: CGFloat {
         get {
             return self.center.x
@@ -155,7 +155,7 @@ extension UIView {
         }
     }
 
-    /// EZSE: getter and setter for the Y coordinate for the center of a view.
+    /// getter and setter for the Y coordinate for the center of a view.
     public var centerY: CGFloat {
         get {
             return self.center.y
@@ -164,7 +164,7 @@ extension UIView {
         }
     }
 
-    /// EZSE: getter and setter for frame size for the view.
+    /// getter and setter for frame size for the view.
     public var size: CGSize {
         get {
             return self.frame.size
@@ -173,33 +173,33 @@ extension UIView {
         }
     }
 
-    /// EZSE: getter for an leftwards offset position from the leftmost edge.
+    /// getter for an leftwards offset position from the leftmost edge.
     public func leftOffset(_ offset: CGFloat) -> CGFloat {
         return self.left - offset
     }
 
-    /// EZSE: getter for an rightwards offset position from the rightmost edge.
+    /// getter for an rightwards offset position from the rightmost edge.
     public func rightOffset(_ offset: CGFloat) -> CGFloat {
         return self.right + offset
     }
 
-    /// EZSE: aligns the view to the top by a given offset.
+    /// aligns the view to the top by a given offset.
     public func topOffset(_ offset: CGFloat) -> CGFloat {
         return self.top - offset
     }
 
-    /// EZSE: align the view to the bottom by a given offset.
+    /// align the view to the bottom by a given offset.
     public func bottomOffset(_ offset: CGFloat) -> CGFloat {
         return self.bottom + offset
     }
 
     //TODO: Add to readme
-    /// EZSE: align the view widthwise to the right by a given offset.
+    /// align the view widthwise to the right by a given offset.
     public func alignRight(_ offset: CGFloat) -> CGFloat {
         return self.w - offset
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func reorderSubViews(_ reorder: Bool = false, tagsToIgnore: [Int] = []) -> CGFloat {
         var currentHeight: CGFloat = 0
         for someView in subviews {
@@ -220,27 +220,27 @@ extension UIView {
         }
     }
 
-    /// EZSE: Centers view in superview horizontally
+    /// Centers view in superview horizontally
     public func centerXInSuperView() {
         guard let parentView = superview else {
-            assertionFailure("EZSwiftExtensions Error: The view \(self) doesn't have a superview")
+            assertionFailure("SwiftExtensions Error: The view \(self) doesn't have a superview")
             return
         }
 
         self.x = parentView.w/2 - self.w/2
     }
 
-    /// EZSE: Centers view in superview vertically
+    /// Centers view in superview vertically
     public func centerYInSuperView() {
         guard let parentView = superview else {
-            assertionFailure("EZSwiftExtensions Error: The view \(self) doesn't have a superview")
+            assertionFailure("SwiftExtensions Error: The view \(self) doesn't have a superview")
             return
         }
 
         self.y = parentView.h/2 - self.h/2
     }
 
-    /// EZSE: Centers view in superview horizontally & vertically
+    /// Centers view in superview horizontally & vertically
     public func centerInSuperView() {
         self.centerXInSuperView()
         self.centerYInSuperView()
@@ -249,7 +249,7 @@ extension UIView {
 
 // MARK: Transform Extensions
 extension UIView {
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func setRotationX(_ x: CGFloat) {
         var transform = CATransform3DIdentity
         transform.m34 = 1.0 / -1000.0
@@ -257,7 +257,7 @@ extension UIView {
         self.layer.transform = transform
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func setRotationY(_ y: CGFloat) {
         var transform = CATransform3DIdentity
         transform.m34 = 1.0 / -1000.0
@@ -265,7 +265,7 @@ extension UIView {
         self.layer.transform = transform
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func setRotationZ(_ z: CGFloat) {
         var transform = CATransform3DIdentity
         transform.m34 = 1.0 / -1000.0
@@ -273,7 +273,7 @@ extension UIView {
         self.layer.transform = transform
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func setRotation(x: CGFloat, y: CGFloat, z: CGFloat) {
         var transform = CATransform3DIdentity
         transform.m34 = 1.0 / -1000.0
@@ -283,7 +283,7 @@ extension UIView {
         self.layer.transform = transform
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func setScale(x: CGFloat, y: CGFloat) {
         var transform = CATransform3DIdentity
         transform.m34 = 1.0 / -1000.0
@@ -294,13 +294,13 @@ extension UIView {
 
 // MARK: Layer Extensions
 extension UIView {
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func setCornerRadius(radius: CGFloat) {
         self.layer.cornerRadius = radius
         self.layer.masksToBounds = true
     }
     //TODO: add this to readme
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func addShadow(offset: CGSize, radius: CGFloat, color: UIColor, opacity: Float, cornerRadius: CGFloat? = nil) {
         self.layer.shadowOffset = offset
         self.layer.shadowRadius = radius
@@ -311,40 +311,40 @@ extension UIView {
         }
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func addBorder(width: CGFloat, color: UIColor) {
         layer.borderWidth = width
         layer.borderColor = color.cgColor
         layer.masksToBounds = true
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func addBorderTop(size: CGFloat, color: UIColor) {
         addBorderUtility(x: 0, y: 0, width: frame.width, height: size, color: color)
     }
 
     //TODO: add to readme
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func addBorderTopWithPadding(size: CGFloat, color: UIColor, padding: CGFloat) {
         addBorderUtility(x: padding, y: 0, width: frame.width - padding*2, height: size, color: color)
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func addBorderBottom(size: CGFloat, color: UIColor) {
         addBorderUtility(x: 0, y: frame.height - size, width: frame.width, height: size, color: color)
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func addBorderLeft(size: CGFloat, color: UIColor) {
         addBorderUtility(x: 0, y: 0, width: size, height: frame.height, color: color)
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func addBorderRight(size: CGFloat, color: UIColor) {
         addBorderUtility(x: frame.width - size, y: 0, width: size, height: frame.height, color: color)
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     fileprivate func addBorderUtility(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, color: UIColor) {
         let border = CALayer()
         border.backgroundColor = color.cgColor
@@ -352,7 +352,7 @@ extension UIView {
         layer.addSublayer(border)
     }
     //TODO: add this to readme
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func drawCircle(fillColor: UIColor, strokeColor: UIColor, strokeWidth: CGFloat) {
         let path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: self.w, height: self.w), cornerRadius: self.w/2)
         let shapeLayer = CAShapeLayer()
@@ -363,7 +363,7 @@ extension UIView {
         self.layer.addSublayer(shapeLayer)
     }
     //TODO: add this to readme
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func drawStroke(width: CGFloat, color: UIColor) {
         let path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: self.w, height: self.w), cornerRadius: self.w/2)
         let shapeLayer = CAShapeLayer ()
@@ -382,12 +382,12 @@ private let UIViewAnimationSpringVelocity: CGFloat = 0.5
 //TODO: add this to readme
 // MARK: Animation Extensions
 extension UIView {
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func spring(animations: @escaping (() -> Void), completion: ((Bool) -> Void)? = nil) {
         spring(duration: UIViewAnimationDuration, animations: animations, completion: completion)
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func spring(duration: TimeInterval, animations: @escaping (() -> Void), completion: ((Bool) -> Void)? = nil) {
         UIView.animate(
             withDuration: UIViewAnimationDuration,
@@ -400,17 +400,17 @@ extension UIView {
         )
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func animate(duration: TimeInterval, animations: @escaping (() -> Void), completion: ((Bool) -> Void)? = nil) {
         UIView.animate(withDuration: duration, animations: animations, completion: completion)
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func animate(animations: @escaping (() -> Void), completion: ((Bool) -> Void)? = nil) {
         animate(duration: UIViewAnimationDuration, animations: animations, completion: completion)
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func pop() {
         setScale(x: 1.1, y: 1.1)
         spring(duration: 0.2, animations: { [unowned self] () -> Void in
@@ -418,7 +418,7 @@ extension UIView {
         })
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func popBig() {
         setScale(x: 1.25, y: 1.25)
         spring(duration: 0.2, animations: { [unowned self] () -> Void in
@@ -426,7 +426,7 @@ extension UIView {
         })
     }
 
-    //EZSE: Reverse pop, good for button animations
+    //Reverse pop, good for button animations
     public func reversePop() {
         setScale(x: 0.9, y: 0.9)
         UIView.animate(withDuration: 0.05, delay: 0, options: .allowUserInteraction, animations: {[weak self] in
@@ -438,7 +438,7 @@ extension UIView {
 //TODO: add this to readme
 // MARK: Render Extensions
 extension UIView {
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func toImage () -> UIImage {
         UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0.0)
         drawHierarchy(in: bounds, afterScreenUpdates: false)
@@ -451,7 +451,7 @@ extension UIView {
 // MARK: Gesture Extensions
 extension UIView {
     /// http://stackoverflow.com/questions/4660371/how-to-add-a-touch-event-to-a-uiview/32182866#32182866
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func addTapGesture(tapNumber: Int = 1, target: AnyObject, action: Selector) {
         let tap = UITapGestureRecognizer(target: target, action: action)
         tap.numberOfTapsRequired = tapNumber
@@ -459,14 +459,14 @@ extension UIView {
         isUserInteractionEnabled = true
     }
 
-    /// EZSwiftExtensions - Make sure you use  "[weak self] (gesture) in" if you are using the keyword self inside the closure or there might be a memory leak
+    /// SwiftExtensions - Make sure you use  "[weak self] (gesture) in" if you are using the keyword self inside the closure or there might be a memory leak
     public func addTapGesture(tapNumber: Int = 1, action: ((UITapGestureRecognizer) -> Void)?) {
         let tap = BlockTap(tapCount: tapNumber, fingerCount: 1, action: action)
         addGestureRecognizer(tap)
         isUserInteractionEnabled = true
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func addSwipeGesture(direction: UISwipeGestureRecognizer.Direction, numberOfTouches: Int = 1, target: AnyObject, action: Selector) {
         let swipe = UISwipeGestureRecognizer(target: target, action: action)
         swipe.direction = direction
@@ -481,21 +481,21 @@ extension UIView {
         isUserInteractionEnabled = true
     }
 
-    /// EZSwiftExtensions - Make sure you use  "[weak self] (gesture) in" if you are using the keyword self inside the closure or there might be a memory leak
+    /// SwiftExtensions - Make sure you use  "[weak self] (gesture) in" if you are using the keyword self inside the closure or there might be a memory leak
     public func addSwipeGesture(direction: UISwipeGestureRecognizer.Direction, numberOfTouches: Int = 1, action: ((UISwipeGestureRecognizer) -> Void)?) {
         let swipe = BlockSwipe(direction: direction, fingerCount: numberOfTouches, action: action)
         addGestureRecognizer(swipe)
         isUserInteractionEnabled = true
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func addPanGesture(target: AnyObject, action: Selector) {
         let pan = UIPanGestureRecognizer(target: target, action: action)
         addGestureRecognizer(pan)
         isUserInteractionEnabled = true
     }
 
-    /// EZSwiftExtensions - Make sure you use  "[weak self] (gesture) in" if you are using the keyword self inside the closure or there might be a memory leak
+    /// SwiftExtensions - Make sure you use  "[weak self] (gesture) in" if you are using the keyword self inside the closure or there might be a memory leak
     public func addPanGesture(action: ((UIPanGestureRecognizer) -> Void)?) {
         let pan = BlockPan(action: action)
         addGestureRecognizer(pan)
@@ -504,7 +504,7 @@ extension UIView {
 
     #if os(iOS)
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func addPinchGesture(target: AnyObject, action: Selector) {
         let pinch = UIPinchGestureRecognizer(target: target, action: action)
         addGestureRecognizer(pinch)
@@ -515,7 +515,7 @@ extension UIView {
 
     #if os(iOS)
 
-    /// EZSwiftExtensions - Make sure you use  "[weak self] (gesture) in" if you are using the keyword self inside the closure or there might be a memory leak
+    /// SwiftExtensions - Make sure you use  "[weak self] (gesture) in" if you are using the keyword self inside the closure or there might be a memory leak
     public func addPinchGesture(action: ((UIPinchGestureRecognizer) -> Void)?) {
         let pinch = BlockPinch(action: action)
         addGestureRecognizer(pinch)
@@ -524,14 +524,14 @@ extension UIView {
 
     #endif
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func addLongPressGesture(target: AnyObject, action: Selector) {
         let longPress = UILongPressGestureRecognizer(target: target, action: action)
         addGestureRecognizer(longPress)
         isUserInteractionEnabled = true
     }
 
-    /// EZSwiftExtensions - Make sure you use  "[weak self] (gesture) in" if you are using the keyword self inside the closure or there might be a memory leak
+    /// SwiftExtensions - Make sure you use  "[weak self] (gesture) in" if you are using the keyword self inside the closure or there might be a memory leak
     public func addLongPressGesture(action: ((UILongPressGestureRecognizer) -> Void)?) {
         let longPress = BlockLongPress(action: action)
         addGestureRecognizer(longPress)
@@ -541,7 +541,7 @@ extension UIView {
 
 //TODO: add to readme
 extension UIView {
-    /// EZSwiftExtensions [UIRectCorner.TopLeft, UIRectCorner.TopRight]
+    /// SwiftExtensions [UIRectCorner.TopLeft, UIRectCorner.TopRight]
     public func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()
@@ -549,14 +549,14 @@ extension UIView {
         self.layer.mask = mask
     }
     
-    /// EZSwiftExtensions - Mask square/rectangle UIView with a circular/capsule cover, with a border of desired color and width around it
+    /// SwiftExtensions - Mask square/rectangle UIView with a circular/capsule cover, with a border of desired color and width around it
     public func roundView(withBorderColor color: UIColor? = nil, withBorderWidth width: CGFloat? = nil) {
         self.setCornerRadius(radius: min(self.frame.size.height, self.frame.size.width) / 2)
         self.layer.borderWidth = width ?? 0
         self.layer.borderColor = color?.cgColor ?? UIColor.clear.cgColor
     }
     
-    /// EZSwiftExtensions - Remove all masking around UIView
+    /// SwiftExtensions - Remove all masking around UIView
     public func nakedView() {
         self.layer.mask = nil
         self.layer.borderWidth = 0
@@ -564,7 +564,7 @@ extension UIView {
 }
 
 extension UIView {
-    ///EZSE: Shakes the view for as many number of times as given in the argument.
+    ///Shakes the view for as many number of times as given in the argument.
     public func shakeViewForTimes(_ times: Int) {
         let anim = CAKeyframeAnimation(keyPath: "transform")
         anim.values = [
@@ -580,7 +580,7 @@ extension UIView {
 }
 
 extension UIView {
-    ///EZSE: Loops until it finds the top root view. //TODO: Add to readme
+    ///Loops until it finds the top root view. //TODO: Add to readme
     func rootView() -> UIView {
         guard let parentView = superview else {
             return self
@@ -594,12 +594,12 @@ extension UIView {
 public let UIViewDefaultFadeDuration: TimeInterval = 0.4
 
 extension UIView {
-    ///EZSE: Fade in with duration, delay and completion block.
+    ///Fade in with duration, delay and completion block.
     public func fadeIn(_ duration: TimeInterval? = UIViewDefaultFadeDuration, delay: TimeInterval? = 0.0, completion: ((Bool) -> Void)? = nil) {
         fadeTo(1.0, duration: duration, delay: delay, completion: completion)
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public func fadeOut(_ duration: TimeInterval? = UIViewDefaultFadeDuration, delay: TimeInterval? = 0.0, completion: ((Bool) -> Void)? = nil) {
         fadeTo(0.0, duration: duration, delay: delay, completion: completion)
     }

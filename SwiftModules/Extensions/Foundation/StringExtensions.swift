@@ -1,6 +1,6 @@
 //
 //  StringExtensions.swift
-//  EZSwiftExtensions
+//  SwiftExtensions
 //
 //  Created by Goktug Yilmaz on 15/07/15.
 //  Copyright (c) 2015 Goktug Yilmaz. All rights reserved.
@@ -17,7 +17,7 @@
 #endif
 
 extension String {
-    /// EZSE: Init string with a base64 encoded string
+    /// Init string with a base64 encoded string
     init?(base64: String) {
         let pad = String(repeating: "=", count: base64.count % 4)
         let base64Padded = base64 + pad
@@ -28,20 +28,20 @@ extension String {
         return nil
     }
     
-    /// EZSE: base64 encoded of string
+    /// base64 encoded of string
     var base64: String {
         let plainData = (self as NSString).data(using: String.Encoding.utf8.rawValue)
         let base64String = plainData!.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
         return base64String
     }
 
-    /// EZSE: Capitalizes first character of String
+    /// Capitalizes first character of String
     public mutating func capitalizeFirst() {
         guard self.count > 0 else { return }
         self.replaceSubrange(startIndex...startIndex, with: String(self[startIndex]).capitalized)
     }
     
-    /// EZSE: Capitalizes first character of String, returns a new string
+    /// Capitalizes first character of String, returns a new string
     public func capitalizedFirst() -> String {
         guard self.count > 0 else { return self }
         var result = self
@@ -50,23 +50,23 @@ extension String {
         return result
     }
     
-    /// EZSE: Checks if string is empty or consists only of whitespace and newline characters
+    /// Checks if string is empty or consists only of whitespace and newline characters
     public var isBlank: Bool {
         let trimmed = trimmingCharacters(in: .whitespacesAndNewlines)
         return trimmed.isEmpty
     }
     
-    /// EZSE: Trims white space and new line characters
+    /// Trims white space and new line characters
     public mutating func trim() {
         self = self.trimmed()
     }
     
-    /// EZSE: Trims white space and new line characters, returns a new string
+    /// Trims white space and new line characters, returns a new string
     public func trimmed() -> String {
         return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
-    /// EZSE: Position of begining character of substing
+    /// Position of begining character of substing
     public func positionOfSubstring(_ subString: String, caseInsensitive: Bool = false, fromEnd: Bool = false) -> Int {
         if subString.isEmpty {
             return -1
@@ -81,27 +81,27 @@ extension String {
         return -1
     }
     
-    /// EZSE: split string using a spearator string, returns an array of string
+    /// split string using a spearator string, returns an array of string
     public func split(_ separator: String) -> [String] {
         return self.components(separatedBy: separator).filter {
             !$0.trimmed().isEmpty
         }
     }
     
-    /// EZSE: split string with delimiters, returns an array of string
+    /// split string with delimiters, returns an array of string
     public func split(_ characters: CharacterSet) -> [String] {
         return self.components(separatedBy: characters).filter {
             !$0.trimmed().isEmpty
         }
     }
     
-    /// EZSE : Returns count of words in string
+    /// Returns count of words in string
     public var countofWords: Int {
         let regex = try? NSRegularExpression(pattern: "\\w+", options: NSRegularExpression.Options())
         return regex?.numberOfMatches(in: self, options: NSRegularExpression.MatchingOptions(), range: NSRange(location: 0, length: self.count)) ?? 0
     }
     
-    /// EZSE : Returns count of paragraphs in string
+    /// Returns count of paragraphs in string
     public var countofParagraphs: Int {
         let regex = try? NSRegularExpression(pattern: "\\n", options: NSRegularExpression.Options())
         let str = self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
@@ -119,7 +119,7 @@ extension String {
         return nil
     }
     
-    /// EZSE: Find matches of regular expression in string
+    /// Find matches of regular expression in string
     public func matchesForRegexInText(_ regex: String!) -> [String] {
         let regex = try? NSRegularExpression(pattern: regex, options: [])
         let results = regex?.matches(in: self, options: [], range: NSRange(location: 0, length: self.count)) ?? []
@@ -152,12 +152,12 @@ extension String {
         return urls
     }
     
-    /// EZSE: Checking if String contains input with comparing options
+    /// Checking if String contains input with comparing options
     public func contains(_ find: String, compareOption: NSString.CompareOptions) -> Bool {
         return self.range(of: find, options: compareOption) != nil
     }
     
-    /// EZSE: Converts String to Int
+    /// Converts String to Int
     public func toInt() -> Int? {
         if let num = NumberFormatter().number(from: self) {
             return num.intValue
@@ -166,7 +166,7 @@ extension String {
         }
     }
     
-    /// EZSE: Converts String to Double
+    /// Converts String to Double
     public func toDouble() -> Double? {
         if let num = NumberFormatter().number(from: self) {
             return num.doubleValue
@@ -175,7 +175,7 @@ extension String {
         }
     }
     
-    /// EZSE: Converts String to Float
+    /// Converts String to Float
     public func toFloat() -> Float? {
         if let num = NumberFormatter().number(from: self) {
             return num.floatValue
@@ -184,7 +184,7 @@ extension String {
         }
     }
     
-    /// EZSE: Converts String to Bool
+    /// Converts String to Bool
     public func toBool() -> Bool? {
         let trimmedString = trimmed().lowercased()
         if trimmedString == "true" || trimmedString == "false" {
@@ -193,7 +193,7 @@ extension String {
         return nil
     }
     
-    ///EZSE: Returns the first index of the occurency of the character in String
+    ///Returns the first index of the occurency of the character in String
     public func getIndexOf(_ char: Character) -> Int? {
         for (index, c) in self.enumerated() where c == char {
             return index
@@ -203,7 +203,7 @@ extension String {
     
     #if os(iOS)
     
-    ///EZSE: Returns bold NSAttributedString
+    ///Returns bold NSAttributedString
     public func bold() -> NSAttributedString {
         let boldString = NSMutableAttributedString(string: self, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: UIFont.systemFontSize)])
         return boldString
@@ -213,7 +213,7 @@ extension String {
     
     #if os(iOS)
 
-    ///EZSE: Returns underlined NSAttributedString
+    ///Returns underlined NSAttributedString
     public func underline() -> NSAttributedString {
         let underlineString = NSAttributedString(string: self, attributes: [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue])
         return underlineString
@@ -223,7 +223,7 @@ extension String {
     
     #if os(iOS)
     
-    ///EZSE: Returns italic NSAttributedString
+    ///Returns italic NSAttributedString
     public func italic() -> NSAttributedString {
         let italicString = NSMutableAttributedString(string: self, attributes: [NSAttributedString.Key.font: UIFont.italicSystemFont(ofSize: UIFont.systemFontSize)])
         return italicString
@@ -233,7 +233,7 @@ extension String {
     
     #if os(iOS)
     
-    ///EZSE: Returns hight of rendered string
+    ///Returns hight of rendered string
     public func height(_ width: CGFloat, font: UIFont, lineBreakMode: NSLineBreakMode?) -> CGFloat {
         var attrib: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font]
         if lineBreakMode != nil {
@@ -249,13 +249,13 @@ extension String {
     
     #if os(iOS) || os(tvOS)
     
-    ///EZSE: Returns NSAttributedString
+    ///Returns NSAttributedString
     public func color(_ color: UIColor) -> NSAttributedString {
         let colorString = NSMutableAttributedString(string: self, attributes: [NSAttributedString.Key.foregroundColor: color])
         return colorString
     }
     
-    ///EZSE: Returns NSAttributedString
+    ///Returns NSAttributedString
     public func colorSubString(_ subString: String, color: UIColor) -> NSMutableAttributedString {
         var start = 0
         var ranges: [NSRange] = []
@@ -277,7 +277,7 @@ extension String {
     
     #endif
     
-    /// EZSE: Checks if String contains Emoji
+    /// Checks if String contains Emoji
     public func includesEmoji() -> Bool {
         for i in 0...count {
             let c: unichar = (self as NSString).character(at: i)
@@ -290,7 +290,7 @@ extension String {
     
     #if os(iOS)
     
-    /// EZSE: copy string to pasteboard
+    /// copy string to pasteboard
     public func addToPasteboard() {
         let pasteboard = UIPasteboard.general
         pasteboard.string = self
@@ -298,7 +298,7 @@ extension String {
     
     #endif
     
-    // EZSE: URL encode a string (percent encoding special chars)
+    // URL encode a string (percent encoding special chars)
     public func urlEncoded() -> String {
         return self.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
     }
@@ -307,12 +307,12 @@ extension String {
         self = urlEncoded()
     }
     
-    // EZSE: Removes percent encoding from string
+    // Removes percent encoding from string
     public func urlDecoded() -> String {
         return removingPercentEncoding ?? self
     }
     
-    // EZSE : Mutating versin of urlDecoded
+    // Mutating versin of urlDecoded
     mutating func urlDecode() {
         self = urlDecoded()
     }
@@ -334,19 +334,19 @@ extension String {
     }
 }
 
-/// EZSE: Pattern matching of strings via defined functions
+/// Pattern matching of strings via defined functions
 public func ~=<T> (pattern: ((T) -> Bool), value: T) -> Bool {
     return pattern(value)
 }
 
-/// EZSE: Can be used in switch-case
+/// Can be used in switch-case
 public func hasPrefix(_ prefix: String) -> (_ value: String) -> Bool {
     return { (value: String) -> Bool in
         value.hasPrefix(prefix)
     }
 }
 
-/// EZSE: Can be used in switch-case
+/// Can be used in switch-case
 public func hasSuffix(_ suffix: String) -> (_ value: String) -> Bool {
     return { (value: String) -> Bool in
         value.hasSuffix(suffix)

@@ -1,6 +1,6 @@
 //
 //  FileManagerExtension.swift
-//  EZSwiftExtensions
+//  SwiftExtensions
 //
 //  Created by Albert Vila on 16/11/16.
 //  Copyright © 2016 Goktug Yilmaz. All rights reserved.

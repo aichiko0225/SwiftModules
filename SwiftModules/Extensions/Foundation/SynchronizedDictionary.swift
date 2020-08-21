@@ -1,6 +1,6 @@
 //
 //  SynchronizedDictionary.swift
-//  EZSwiftExtensions
+//  SwiftExtensions
 //
 //  Created by rahim on 11/8/18.
 //  Copyright © 2018 Goktug Yilmaz. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// EZSE: This Synchronized Dictionary gets generic key, value types and used for the purpose of read, write on a dictionary Synchronized.
+/// This Synchronized Dictionary gets generic key, value types and used for the purpose of read, write on a dictionary Synchronized.
 public class SynchronizedDictionary <Key: Hashable, Value> {
     
     fileprivate let queue = DispatchQueue(label: "SynchronizedDictionary", attributes: .concurrent)

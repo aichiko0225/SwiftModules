@@ -1,6 +1,6 @@
 //
 //  UserDefaultsExtension.swift
-//  EZSwiftExtensions
+//  SwiftExtensions
 //
 //  Created by Vinay on 12/1/15.
 //  Copyright © 2015 Goktug Yilmaz. All rights reserved.
@@ -10,7 +10,7 @@ import Foundation
 
 extension UserDefaults {
     
-    /// EZSE: Generic getter and setter for UserDefaults. 
+    /// Generic getter and setter for UserDefaults. 
     public subscript(key: String) -> AnyObject? {
         get {
             return object(forKey: key) as AnyObject?
@@ -20,7 +20,7 @@ extension UserDefaults {
         }
     }
     
-    /// EZSE: Date from UserDefaults.
+    /// Date from UserDefaults.
     public func date(forKey key: String) -> Date? {
         return object(forKey: key) as? Date
     }

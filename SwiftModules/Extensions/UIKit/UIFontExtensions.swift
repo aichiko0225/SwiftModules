@@ -10,7 +10,7 @@
 
 import UIKit
 
-/// EZSwiftExtensions
+/// SwiftExtensions
 public enum FontType: String {
     case None = ""
     case Regular = "Regular"
@@ -31,7 +31,7 @@ public enum FontType: String {
     case Heavy = "Heavy"
 }
 
-/// EZSwiftExtensions
+/// SwiftExtensions
 public enum FontName: String {
     case HelveticaNeue
     case Helvetica
@@ -50,7 +50,7 @@ public enum FontName: String {
 
 extension UIFont {
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public class func Font(_ name: FontName, type: FontType, size: CGFloat) -> UIFont! {
       //Using type
       let fontName = name.rawValue + "-" + type.rawValue
@@ -73,29 +73,29 @@ extension UIFont {
       return nil
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public class func HelveticaNeue(type: FontType, size: CGFloat) -> UIFont {
         return Font(.HelveticaNeue, type: type, size: size)
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public class func AvenirNext(type: FontType, size: CGFloat) -> UIFont {
         return Font(.AvenirNext, type: type, size: size)
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public class func AvenirNextDemiBold(size: CGFloat) -> UIFont {
         return Font(.AvenirNext, type: .DemiBold, size: size)
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public class func AvenirNextRegular(size: CGFloat) -> UIFont {
         return Font(.AvenirNext, type: .Regular, size: size)
     }
 
     // MARK: Deprecated
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     @available(*, deprecated: 1.8)
     public class func PrintFontFamily(_ font: FontName) {
         let arr = UIFont.fontNames(forFamilyName: font.rawValue)

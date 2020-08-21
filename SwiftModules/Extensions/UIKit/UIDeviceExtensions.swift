@@ -1,6 +1,6 @@
 //
 //  UIDeviceExtensions.swift
-//  EZSwiftExtensions
+//  SwiftExtensions
 //
 //  Created by Goktug Yilmaz on 15/07/15.
 //  Copyright (c) 2015 Goktug Yilmaz. All rights reserved.
@@ -10,7 +10,7 @@
 
 import UIKit
 
-/// EZSwiftExtensions
+/// SwiftExtensions
 private let DeviceList = [
     /* iPod 5 */          "iPod5,1": "iPod Touch 5",
     /* iPod 6 */          "iPod7,1": "iPod Touch 6",
@@ -45,52 +45,52 @@ private let DeviceList = [
 ]
 
 extension UIDevice {
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public class func idForVendor() -> String? {
         return UIDevice.current.identifierForVendor?.uuidString
     }
 
-    /// EZSwiftExtensions - Operating system name
+    /// SwiftExtensions - Operating system name
     public class func systemName() -> String {
         return UIDevice.current.systemName
     }
 
-    /// EZSwiftExtensions - Operating system version
+    /// SwiftExtensions - Operating system version
     public class func systemVersion() -> String {
         return UIDevice.current.systemVersion
     }
 
-    /// EZSwiftExtensions - Operating system version
+    /// SwiftExtensions - Operating system version
     public class func systemFloatVersion() -> Float {
         return (systemVersion() as NSString).floatValue
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public class func deviceName() -> String {
         return UIDevice.current.name
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public class func deviceLanguage() -> String {
         return Bundle.main.preferredLocalizations[0]
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public class func deviceModelReadable() -> String {
         return DeviceList[deviceModel()] ?? deviceModel()
     }
 
-    /// EZSE: Returns true if the device is iPhone //TODO: Add to readme
+    /// Returns true if the device is iPhone //TODO: Add to readme
     public class func isPhone() -> Bool {
         return UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone
     }
 
-    /// EZSE: Returns true if the device is iPad //TODO: Add to readme
+    /// Returns true if the device is iPad //TODO: Add to readme
     public class func isPad() -> Bool {
         return UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public class func deviceModel() -> String {
         var systemInfo = utsname()
         uname(&systemInfo)
@@ -223,7 +223,7 @@ extension UIDevice {
         return isVersionOrEarlier(.ten)
     }
 
-    /// EZSwiftExtensions
+    /// SwiftExtensions
     public class func isSystemVersionOver(_ requiredVersion: String) -> Bool {
         switch systemVersion().compare(requiredVersion, options: NSString.CompareOptions.numeric) {
         case .orderedSame, .orderedDescending:
