@@ -16,10 +16,15 @@
     "tag": "0.1.0"
   },
   "social_media_url": "https://github.com/aichiko0225",
+  "static_framework": true,
   "platforms": {
-    "ios": "8.0"
+    "ios": "10.0"
   },
-  "source_files": "SwiftModules/Classes/**/*",
+  "default_subspecs": [
+    "Extensions",
+    "Services",
+    "RxComponents"
+  ],
   "swift_versions": [
     "5.0",
     "4.0",
@@ -28,6 +33,47 @@
   "frameworks": [
     "Foundation",
     "UIKit"
+  ],
+  "subspecs": [
+    {
+      "name": "Extensions",
+      "source_files": "SwiftModules/Extensions/**/*.swift",
+      "dependencies": {
+        "SwifterSwift": [
+
+        ]
+      },
+      "subspecs": [
+        {
+          "name": "Swizzled",
+          "source_files": "SwiftModules/Extensions/Swizzled/*.swift"
+        }
+      ]
+    },
+    {
+      "name": "Services",
+      "source_files": "SwiftModules/SwiftModules/**/*.swift",
+      "dependencies": {
+        "Moya": [
+
+        ]
+      }
+    },
+    {
+      "name": "RxComponents",
+      "source_files": "SwiftModules/RxComponents/**/*.swift",
+      "dependencies": {
+        "RxSwift": [
+
+        ],
+        "RxCocoa": [
+
+        ],
+        "RxDataSources": [
+
+        ]
+      }
+    }
   ],
   "swift_version": "5.0"
 }

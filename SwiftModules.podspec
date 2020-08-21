@@ -28,12 +28,40 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/aichiko0225/SwiftModules.git', :tag => s.version.to_s }
   s.social_media_url = 'https://github.com/aichiko0225'
 
-  s.ios.deployment_target = '8.0'
-
-  s.source_files = 'SwiftModules/Classes/**/*'
+  s.static_framework = true
+  s.ios.deployment_target = '10.0'
+  s.default_subspecs = 'Extensions', 'Services', 'RxComponents'
+  # s.source_files = 'SwiftModules/Classes/**/*'
 
   s.swift_version = ['5.0', '4.0', '4.2']
   s.frameworks='Foundation','UIKit'
+
+  # subspec
+  s.subspec 'Extensions' do |ss|
+    ss.source_files = 'SwiftModules/Extensions/**/*.swift'
+    
+    # 混淆view 的声明周期
+    ss.subspec 'Swizzled' do |sss|
+      sss.source_files = 'SwiftModules/Extensions/Swizzled/*.swift'
+    end
+    # dependency
+    ss.dependency "SwifterSwift"
+  end
+  
+  s.subspec 'Services' do |ss|
+    ss.source_files = 'SwiftModules/SwiftModules/**/*.swift'
+    # dependency
+    ss.dependency "Moya"
+  end
+
+  # RxComponents
+  s.subspec 'RxComponents' do |ss|
+    ss.source_files = 'SwiftModules/RxComponents/**/*.swift'
+    
+    ss.dependency "RxSwift"
+    ss.dependency "RxCocoa"
+    ss.dependency "RxDataSources"
+  end
   
   # s.resource_bundles = {
   #   'SwiftModules' => ['SwiftModules/Assets/*.png']

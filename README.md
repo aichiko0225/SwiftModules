@@ -17,12 +17,18 @@ SwiftModules is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'SwiftModules'
+pod 'SwiftModules' :git => 'https://github.com/aichiko0225/SwiftModules'
+```
+
+如果只需要Extensions可以
+
+```ruby
+pod 'SwiftModules/Extensions' :git => 'https://github.com/aichiko0225/SwiftModules'
 ```
 
 ## Author
 
-aichiko66@163.com, aichiko66@163.com
+aichiko66@163.com
 
 ## License
 

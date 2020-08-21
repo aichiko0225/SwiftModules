@@ -8,13 +8,29 @@
 
 import UIKit
 
+class AView: UIView {
+    
+    override func cc_setupUI() {
+        debugPrint("setupUI")
+    }
+    
+    override func cc_setupLayout() {
+        debugPrint("setupLayout")
+    }
+    
+    override func cc_bindViewModel() {
+        debugPrint("bindViewModel")
+    }
+    
+}
+
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
 
 }
 

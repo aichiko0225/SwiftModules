@@ -1,16 +1,90 @@
 PODS:
-  - SwiftModules (0.1.0)
+  - Alamofire (5.2.2)
+  - Differentiator (4.0.1)
+  - Moya (14.0.0):
+    - Moya/Core (= 14.0.0)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - SwifterSwift (5.2.0):
+    - SwifterSwift/AppKit (= 5.2.0)
+    - SwifterSwift/CoreAnimation (= 5.2.0)
+    - SwifterSwift/CoreGraphics (= 5.2.0)
+    - SwifterSwift/CoreLocation (= 5.2.0)
+    - SwifterSwift/Dispatch (= 5.2.0)
+    - SwifterSwift/Foundation (= 5.2.0)
+    - SwifterSwift/MapKit (= 5.2.0)
+    - SwifterSwift/SceneKit (= 5.2.0)
+    - SwifterSwift/SpriteKit (= 5.2.0)
+    - SwifterSwift/StoreKit (= 5.2.0)
+    - SwifterSwift/SwiftStdlib (= 5.2.0)
+    - SwifterSwift/UIKit (= 5.2.0)
+  - SwifterSwift/AppKit (5.2.0)
+  - SwifterSwift/CoreAnimation (5.2.0)
+  - SwifterSwift/CoreGraphics (5.2.0)
+  - SwifterSwift/CoreLocation (5.2.0)
+  - SwifterSwift/Dispatch (5.2.0)
+  - SwifterSwift/Foundation (5.2.0)
+  - SwifterSwift/MapKit (5.2.0)
+  - SwifterSwift/SceneKit (5.2.0)
+  - SwifterSwift/SpriteKit (5.2.0)
+  - SwifterSwift/StoreKit (5.2.0)
+  - SwifterSwift/SwiftStdlib (5.2.0)
+  - SwifterSwift/UIKit (5.2.0)
+  - SwiftModules (0.1.0):
+    - SwiftModules/Extensions (= 0.1.0)
+    - SwiftModules/RxComponents (= 0.1.0)
+    - SwiftModules/Services (= 0.1.0)
+  - SwiftModules/Extensions (0.1.0):
+    - SwifterSwift
+    - SwiftModules/Extensions/Swizzled (= 0.1.0)
+  - SwiftModules/Extensions/Swizzled (0.1.0):
+    - SwifterSwift
+  - SwiftModules/RxComponents (0.1.0):
+    - RxCocoa
+    - RxDataSources
+    - RxSwift
+  - SwiftModules/Services (0.1.0):
+    - Moya
 
 DEPENDENCIES:
   - SwiftModules (from `../`)
+
+SPEC REPOS:
+  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
+    - Alamofire
+    - Differentiator
+    - Moya
+    - RxCocoa
+    - RxDataSources
+    - RxRelay
+    - RxSwift
+    - SwifterSwift
 
 EXTERNAL SOURCES:
   SwiftModules:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SwiftModules: 091e41c58ede23855b0f1299d819dcd261409fd0
+  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
+  SwiftModules: c18efcdf5fc7ad8260f795840412ae4e0846aeb2
 
-PODFILE CHECKSUM: 2fa636657e2fcaf38e4279d22aacbd05400a2039
+PODFILE CHECKSUM: cdae830a049486d1f5226c29eb388e65833ca32a
 
 COCOAPODS: 1.8.4
