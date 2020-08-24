@@ -62,3 +62,45 @@ public extension Reactive where Base: MoyaProviderType {
         }
     }
 }
+
+public extension Reactive where Base: MoyaProviderType {
+    
+    /// rx 请求 返回 Observable
+    func request(_ token: Base.Target, callbackQueue: DispatchQueue? = nil) -> Observable<Response> {
+        return Observable.create { [weak base] observer in
+            let cancellableToken = base?.request(token, callbackQueue: callbackQueue, progress: nil) { result in
+                switch result {
+                case let .success(response):
+                    observer.onNext(response)
+                case let .failure(error):
+                    observer.onError(error)
+                }
+            }
+
+            return Disposables.create {
+                cancellableToken?.cancel()
+            }
+        }
+    }
+    
+    /// 缓存请求 返回 Observable
+    func cacheRequest(_ token: Base.Target,
+                      cacheType: CacheKeyType = .default,
+                      callbackQueue: DispatchQueue? = nil) -> Observable<Response> {
+        return Observable.create { [weak base] observer in
+            let cancellableToken = base?.cacheRequest(token, cacheType: cacheType, callbackQueue: callbackQueue, progress: nil, completion: { (result) in
+                switch result {
+                case let .success(response):
+                    observer.onNext(response)
+                case let .failure(error):
+                    observer.onError(error)
+                }
+            })
+
+            return Disposables.create {
+                cancellableToken?.cancel()
+            }
+        }
+    }
+}
+
