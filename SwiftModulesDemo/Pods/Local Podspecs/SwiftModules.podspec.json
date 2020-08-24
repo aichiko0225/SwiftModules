@@ -34,6 +34,11 @@
     "Foundation",
     "UIKit"
   ],
+  "dependencies": {
+    "SwiftyBeaver": [
+
+    ]
+  },
   "subspecs": [
     {
       "name": "Extensions",
@@ -52,9 +57,15 @@
     },
     {
       "name": "Services",
-      "source_files": "SwiftModules/SwiftModules/**/*.swift",
+      "source_files": "SwiftModules/Services/**/*.swift",
       "dependencies": {
         "Moya": [
+
+        ],
+        "SwiftyJSON": [
+
+        ],
+        "YYCache": [
 
         ]
       }

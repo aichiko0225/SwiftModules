@@ -49,9 +49,11 @@ Pod::Spec.new do |s|
   end
   
   s.subspec 'Services' do |ss|
-    ss.source_files = 'SwiftModules/SwiftModules/**/*.swift'
+    ss.source_files = 'SwiftModules/Services/**/*.swift'
     # dependency
     ss.dependency "Moya"
+    ss.dependency "SwiftyJSON"
+    ss.dependency "YYCache"
   end
 
   # RxComponents
@@ -68,6 +70,8 @@ Pod::Spec.new do |s|
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
+
+  # Logger
+  s.dependency 'SwiftyBeaver'
 end

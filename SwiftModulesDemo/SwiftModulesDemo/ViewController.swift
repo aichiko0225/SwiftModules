@@ -24,12 +24,17 @@ class AView: UIView {
     
 }
 
-
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        log.debug("11111")
+        log.info("22222")
+        log.warning("33333")
+        log.verbose("44444")
+        log.error("55555")
     }
 
 }

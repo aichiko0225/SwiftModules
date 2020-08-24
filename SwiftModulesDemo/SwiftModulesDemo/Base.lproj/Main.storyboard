@@ -40,6 +40,16 @@
                                 </constraints>
                                 <state key="normal" title="collectionView"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89g-Dj-DOR">
+                                <rect key="frame" x="149.5" y="458" width="115" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="954-YV-uqG"/>
+                                </constraints>
+                                <state key="normal" title="RequestExample"/>
+                                <connections>
+                                    <segue destination="KkE-RA-dKs" kind="show" id="FoQ-0t-4ob"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -47,7 +57,9 @@
                             <constraint firstItem="RmX-pg-Jve" firstAttribute="top" secondItem="QUV-f9-WH3" secondAttribute="bottom" constant="20" id="Pf6-mc-Gbf"/>
                             <constraint firstItem="RmX-pg-Jve" firstAttribute="centerX" secondItem="QUV-f9-WH3" secondAttribute="centerX" id="RWX-HR-zUI"/>
                             <constraint firstItem="WH2-S0-Nod" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="Y7t-yq-dIg"/>
+                            <constraint firstItem="89g-Dj-DOR" firstAttribute="centerX" secondItem="RmX-pg-Jve" secondAttribute="centerX" id="crX-ts-f12"/>
                             <constraint firstItem="WH2-S0-Nod" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dkn-ck-H1G"/>
+                            <constraint firstItem="89g-Dj-DOR" firstAttribute="top" secondItem="RmX-pg-Jve" secondAttribute="bottom" constant="20" id="exg-ON-0wi"/>
                             <constraint firstItem="QUV-f9-WH3" firstAttribute="top" secondItem="WH2-S0-Nod" secondAttribute="bottom" constant="30" id="ujt-3C-E52"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -57,6 +69,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="500" y="51"/>
+        </scene>
+        <!--CacheExample-->
+        <scene sceneID="zTV-y6-nfm">
+            <objects>
+                <viewController id="KkE-RA-dKs" customClass="CacheViewController" customModule="SwiftModulesDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fsW-4u-ZiU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="WzY-Vm-Qnf"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="CacheExample" id="qF0-A6-jg4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3JE-Bf-Vod" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1533" y="405"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="lJI-t2-tko">
