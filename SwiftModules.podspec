@@ -70,6 +70,7 @@ Pod::Spec.new do |s|
     ss.dependency 'RxSwift'
     ss.dependency 'RxCocoa'
     ss.dependency 'RxDataSources'
+    ss.dependency 'MJRefresh'
   end
   
   # s.resource_bundles = {
@@ -78,7 +79,9 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.dependency 'AFNetworking', '~> 2.3'
-
+  
+  # MBProgressHUD - HUD显示
+  s.dependency 'MBProgressHUD'
   # Logger
   s.dependency 'SwiftyBeaver'
 end
