@@ -2,7 +2,7 @@
 //  CacheKeyType.swift
 //  SwiftModules
 //
-//  Created by 赵光飞 on 2020/8/24.
+//  Created by ash on 2020/8/24.
 //
 
 import Foundation
@@ -43,19 +43,20 @@ public enum CacheKeyType {
     case custom(String)
 }
 
+// MARK: CacheCodingdata
 class CacheCodingdata: NSObject, NSSecureCoding {
     
     // 请求的数据
     var cacheData: Data
     
-    // 1
+    // 1 根据版本号来废弃缓存
     var version: Double = 1
     
     static var supportsSecureCoding: Bool {
         return true
     }
     
-    init(_ data: Data) {
+    init(_ data: Data, version: Double = 1) {
         self.cacheData = data
         super.init()
     }

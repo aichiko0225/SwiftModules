@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
 
   s.static_framework = true
   s.ios.deployment_target = '10.0'
-  s.default_subspecs = 'Extensions', 'Services', 'RxComponents'
+  s.default_subspecs = 'Extensions', 'Services_Rx', 'RxComponents'
   # s.source_files = 'SwiftModules/Classes/**/*'
 
   s.swift_version = ['5.0', '4.0', '4.2']
@@ -45,24 +45,31 @@ Pod::Spec.new do |s|
       sss.source_files = 'SwiftModules/Extensions/Swizzled/*.swift'
     end
     # dependency
-    ss.dependency "SwifterSwift"
+    ss.dependency 'SwifterSwift'
   end
   
   s.subspec 'Services' do |ss|
     ss.source_files = 'SwiftModules/Services/**/*.swift'
     # dependency
-    ss.dependency "Moya"
-    ss.dependency "SwiftyJSON"
-    ss.dependency "YYCache"
+    ss.dependency 'Moya'
+    ss.dependency 'SwiftyJSON'
+    ss.dependency 'YYCache'
+    ss.dependency 'HandyJSON', '~> 5.0.2'
+  end
+
+  s.subspec "Services_Rx" do |ss|
+    ss.source_files = "SwiftModules/Services_Rx/*.swift"
+    ss.dependency "SwiftModules/Services"
+    ss.dependency "RxSwift", "~> 5.0"
   end
 
   # RxComponents
   s.subspec 'RxComponents' do |ss|
     ss.source_files = 'SwiftModules/RxComponents/**/*.swift'
     
-    ss.dependency "RxSwift"
-    ss.dependency "RxCocoa"
-    ss.dependency "RxDataSources"
+    ss.dependency 'RxSwift'
+    ss.dependency 'RxCocoa'
+    ss.dependency 'RxDataSources'
   end
   
   # s.resource_bundles = {

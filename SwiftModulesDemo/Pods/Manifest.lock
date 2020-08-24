@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (5.2.2)
   - Differentiator (4.0.1)
+  - HandyJSON (5.0.2)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
@@ -43,7 +44,7 @@ PODS:
   - SwiftModules (0.1.0):
     - SwiftModules/Extensions (= 0.1.0)
     - SwiftModules/RxComponents (= 0.1.0)
-    - SwiftModules/Services (= 0.1.0)
+    - SwiftModules/Services_Rx (= 0.1.0)
     - SwiftyBeaver
   - SwiftModules/Extensions (0.1.0):
     - SwifterSwift
@@ -58,10 +59,15 @@ PODS:
     - RxSwift
     - SwiftyBeaver
   - SwiftModules/Services (0.1.0):
+    - HandyJSON (~> 5.0.2)
     - Moya
     - SwiftyBeaver
     - SwiftyJSON
     - YYCache
+  - SwiftModules/Services_Rx (0.1.0):
+    - RxSwift (~> 5.0)
+    - SwiftModules/Services
+    - SwiftyBeaver
   - SwiftyBeaver (1.9.1)
   - SwiftyJSON (5.0.0)
   - YYCache (1.0.4)
@@ -73,6 +79,7 @@ SPEC REPOS:
   https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
     - Alamofire
     - Differentiator
+    - HandyJSON
     - Moya
     - RxCocoa
     - RxDataSources
@@ -90,17 +97,18 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
-  SwiftModules: 8c87e4f7cd46ef62a1a9968c4133376762a274b2
+  SwiftModules: e1bd90bc442cb5df88b7ce4f1680d9989cbae710
   SwiftyBeaver: a1f5691458561414bcfab51874b2b7445451602b
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: cdae830a049486d1f5226c29eb388e65833ca32a
+PODFILE CHECKSUM: 2eea9b4e0554ac77abb98a98282763e1afc8a631
 
 COCOAPODS: 1.8.4

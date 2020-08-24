@@ -31,7 +31,9 @@ open class Cache {
         return cacheManager.object(forKey: key) as? T
     }
     
-    public func object<T: NSCoding>(with key: String, modelType: T.Type, block: ((String, T) -> Void)?) {
+    public func object<T: NSCoding>(with key: String,
+                                    modelType: T.Type,
+                                    block: ((String, T) -> Void)?) {
         cacheManager.object(forKey: key) { (str, id) in
             if let t_id = id as? T {
                 block?(str, t_id)

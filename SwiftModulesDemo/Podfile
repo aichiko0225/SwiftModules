@@ -8,7 +8,8 @@ source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 target 'SwiftModulesDemo' do
 
   pod 'SwiftModules', :path => '../'
-
+  # git 地址下载
+#  pod 'SwiftModules', :git => 'https://github.com/aichiko0225/SwiftModules'
 end
 
 

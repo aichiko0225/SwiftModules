@@ -22,7 +22,7 @@
   },
   "default_subspecs": [
     "Extensions",
-    "Services",
+    "Services_Rx",
     "RxComponents"
   ],
   "swift_versions": [
@@ -67,6 +67,21 @@
         ],
         "YYCache": [
 
+        ],
+        "HandyJSON": [
+          "~> 5.0.2"
+        ]
+      }
+    },
+    {
+      "name": "Services_Rx",
+      "source_files": "SwiftModules/Services_Rx/*.swift",
+      "dependencies": {
+        "SwiftModules/Services": [
+
+        ],
+        "RxSwift": [
+          "~> 5.0"
         ]
       }
     },
