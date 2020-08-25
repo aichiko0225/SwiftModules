@@ -279,6 +279,9 @@
 		5E13589E564DF35414E2D26F0D25B1F6 /* MultiTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3A8DF5D7910E46B1AD74A5B635342E /* MultiTarget.swift */; };
 		5E30590406EF2DB9D99A229F815F0195 /* CollectionViewSectionedDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F3D805E5BF24AF75811E764967C6A /* CollectionViewSectionedDataSource.swift */; };
 		5E59914AFEEE23E635C195F01E82D692 /* SectionModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EE4D1DB9DF81FDA92FD9CF83BF4024 /* SectionModelType.swift */; };
+		5E64D13B24F4D9DD0040BCB4 /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64D13A24F4D9DD0040BCB4 /* ErrorTracker.swift */; };
+		5E64D13D24F4EE040040BCB4 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64D13C24F4EE030040BCB4 /* NameSpace.swift */; };
+		5E64D13F24F4F5250040BCB4 /* RefreshableConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64D13E24F4F5250040BCB4 /* RefreshableConfig.swift */; };
 		5E8BC3A2D193391B517523A1295C7826 /* TransformType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97806B0471EE7040BDAAD13CDB672BF /* TransformType.swift */; };
 		5F32C4CA8D81E4DB9F466C783D840E67 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051FB6B051290172BEB414AAB69C269E /* DateExtensions.swift */; };
 		6037F2D8016B5D1E591406A9D8A599B8 /* UIAlertAction+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A7F9AF3ACD245B66BA947E0E70756D /* UIAlertAction+Rx.swift */; };
@@ -1231,6 +1234,9 @@
 		5D86982C4387F414D59AABADBA3F7697 /* NotificationCenterExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NotificationCenterExtensions.swift; path = Sources/SwifterSwift/Foundation/NotificationCenterExtensions.swift; sourceTree = "<group>"; };
 		5DDF96F80BC883CA1FAA49041C12D0DA /* HandyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HandyJSON-prefix.pch"; sourceTree = "<group>"; };
 		5E1A9FF5831B5A9B013A19FD0A600FEC /* Moya-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Moya-Info.plist"; sourceTree = "<group>"; };
+		5E64D13A24F4D9DD0040BCB4 /* ErrorTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
+		5E64D13C24F4EE030040BCB4 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
+		5E64D13E24F4F5250040BCB4 /* RefreshableConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableConfig.swift; sourceTree = "<group>"; };
 		5E6BB144B12F466CD591863625CD83CC /* UIPickerView+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIPickerView+Rx.swift"; path = "RxCocoa/iOS/UIPickerView+Rx.swift"; sourceTree = "<group>"; };
 		5E8F608F019FCABBF4DC8799DC1F9E67 /* CGVectorExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CGVectorExtensions.swift; path = Sources/SwifterSwift/CoreGraphics/CGVectorExtensions.swift; sourceTree = "<group>"; };
 		5EB58196DB7BB5923E60BD0E87D46C50 /* Deprecated.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Deprecated.swift; path = RxCocoa/Deprecated.swift; sourceTree = "<group>"; };
@@ -2070,6 +2076,7 @@
 			isa = PBXGroup;
 			children = (
 				A4FA56FDA0CD5C8DAD4868485543A90D /* ActivityIndicator.swift */,
+				5E64D13A24F4D9DD0040BCB4 /* ErrorTracker.swift */,
 				6018D97807A1417D047BE9347650B22F /* GeolocationService.swift */,
 				74397A8C8E0D2ED73F4797C236A708EC /* Reachability.swift */,
 				C4FA6A91DF7BE18B5352BA12C92A5121 /* ReachabilityService.swift */,
@@ -2969,6 +2976,8 @@
 			isa = PBXGroup;
 			children = (
 				20CA203EC138D45982A330D416F851B3 /* MJRefresh+Rx.swift */,
+				5E64D13E24F4F5250040BCB4 /* RefreshableConfig.swift */,
+				5E64D13C24F4EE030040BCB4 /* NameSpace.swift */,
 			);
 			name = RxMJRefresh;
 			path = SwiftModules/RxComponents/RxMJRefresh;
@@ -4292,12 +4301,14 @@
 				CDC47276CA04653746DFF766C02075FD /* Observable+Occupiable.swift in Sources */,
 				FEC2026A5571579B0EF025C938B87D75 /* Observable+Optional.swift in Sources */,
 				C3984CC781BE3C2FE872934A54BC2D93 /* Observable+Response.swift in Sources */,
+				5E64D13F24F4F5250040BCB4 /* RefreshableConfig.swift in Sources */,
 				8F51B44D8BD84807BA79E4D412DFE9FF /* ObservableType+HandyJSON.swift in Sources */,
 				1A1350E0D2A71D0ECFE2948FCFA9D28C /* ObservableType+SwiftyJSON.swift in Sources */,
 				F58AA57F00707B0E489D7B802BF2F1B7 /* Occupiable.swift in Sources */,
 				2A5A4B7777B7031A9B31E5A1322C42A0 /* OptionalType.swift in Sources */,
 				70F3DC806E49B6F6E5AB08EB5411F024 /* Reachability.swift in Sources */,
 				8343681B23132C504C6C064ACAA927AE /* ReachabilityService.swift in Sources */,
+				5E64D13B24F4D9DD0040BCB4 /* ErrorTracker.swift in Sources */,
 				6CAD05D4145B357C861A870393F65B3A /* Response+HandyJSON.swift in Sources */,
 				44527CA88E7A6A49632D055D5908132F /* Response+SwiftyJSON.swift in Sources */,
 				A4A52C90B80DB61EFC21224D725A7186 /* ResponsePlugin.swift in Sources */,
@@ -4322,6 +4333,7 @@
 				D172748E789620BD7CB8E60ED5B515D4 /* Types.swift in Sources */,
 				FA3C44826C4CC54B6351064D46F392A0 /* UIApplicationExtensions.swift in Sources */,
 				1AE305D76DEA521A5AC67E779E55C464 /* UIButtonExtensions.swift in Sources */,
+				5E64D13D24F4EE040040BCB4 /* NameSpace.swift in Sources */,
 				7FA93C23E4579B923233AA42396BC251 /* UIColoredView.swift in Sources */,
 				E43ECFF8E62B33E1C4636644E76C513F /* UIColorExtensions.swift in Sources */,
 				C897CB4E8EA35B82FA083527E00C8D88 /* UIDeviceExtensions.swift in Sources */,

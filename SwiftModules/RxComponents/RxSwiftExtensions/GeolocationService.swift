@@ -10,13 +10,13 @@ import CoreLocation
 import RxSwift
 import RxCocoa
 
-class GeolocationService {
+open class GeolocationService {
     
-    static let instance = GeolocationService()
-    private (set) var authorized: Driver<Bool>
-    private (set) var location: Driver<CLLocationCoordinate2D>
+    public static let instance = GeolocationService()
+    public private(set) var authorized: Driver<Bool>
+    public private(set) var location: Driver<CLLocationCoordinate2D>
     
-    private let locationManager = CLLocationManager()
+    public let locationManager = CLLocationManager()
     
     private init() {
         

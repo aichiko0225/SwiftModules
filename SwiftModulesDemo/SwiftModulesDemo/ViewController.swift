@@ -35,6 +35,21 @@ class ViewController: UIViewController {
         log.warning("33333")
         log.verbose("44444")
         log.error("55555")
+        
+        let geolocationService = GeolocationService.instance
+        
+        geolocationService.authorized.drive(onNext: { (_) in
+            
+        }).disposed(by: rx.disposeBag)
+//            .drive(noGeolocationView.rx.isHidden)
+//            .disposed(by: disposeBag)
+        
+        geolocationService.location.drive(onNext: { (_) in
+            
+        }).disposed(by: rx.disposeBag)
+//            .drive(label.rx.coordinates)
+//            .disposed(by: disposeBag)
+        
     }
 
 }
