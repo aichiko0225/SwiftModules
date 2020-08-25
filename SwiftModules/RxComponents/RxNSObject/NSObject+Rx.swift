@@ -35,7 +35,6 @@ public extension Reactive where Base: AnyObject {
                 return disposeObject
             }
         }
-        
         set {
             synchronizedBag {
                 objc_setAssociatedObject(base, &disposeBagContext, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)

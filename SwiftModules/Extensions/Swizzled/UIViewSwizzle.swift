@@ -141,8 +141,7 @@ extension UIView {
             )
         }
         get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.hasViewAppeared)
-                as? Bool ?? false
+            return objc_getAssociatedObject(self, &AssociatedKeys.hasViewAppeared) as? Bool ?? false
         }
     }
 }
