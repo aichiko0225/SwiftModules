@@ -9,6 +9,7 @@
 import Foundation
 @_exported import Moya
 @_exported import Alamofire
+@_exported import HandyJSON
 import struct Alamofire.HTTPHeaders
 
 let networkActivityPlugin = NetworkActivityPlugin{ (changeType: NetworkActivityChangeType, targetType: TargetType) in

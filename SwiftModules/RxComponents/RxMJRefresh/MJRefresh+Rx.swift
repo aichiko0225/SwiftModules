@@ -35,6 +35,8 @@ public extension AssociatedObjectStore {
 typealias RefreshHeader = MJRefreshHeader
 typealias RefreshFooter = MJRefreshFooter
 
+/// 刷新数据的 类型
+/// header为刷新，footer为加载下一页
 public enum RefreshType {
     case header
     case footer
@@ -69,6 +71,42 @@ fileprivate enum TagType: Int {
     case indiscrimination = -1
 }
 
+// MARK: 设置默认配置
+public class RefreshableConfigure: NSObject {
+    
+    static let shared = RefreshableConfigure()
+    private override init() { super.init() }
+    
+    fileprivate var headerConfig : RefreshableHeaderConfig?
+    fileprivate var footerConfig: RefreshableFooterConfig?
+    
+    /// 获取默认下拉配置
+    ///
+    /// - Returns: RefreshableHeaderConfig
+    static func defaultHeaderConfig() -> RefreshableHeaderConfig? {
+        return RefreshableConfigure.shared.headerConfig
+    }
+    
+    /// 获取默认上拉配置
+    ///
+    /// - Returns: RefreshableFooterConfig
+    static func defaultFooterConfig() -> RefreshableFooterConfig? {
+        return RefreshableConfigure.shared.footerConfig
+    }
+    
+    /// 设置默认上拉配置
+    ///
+    /// - Parameters:
+    ///   - headerConfig: RefreshableHeaderConfig
+    ///   - footerConfig: RefreshableFooterConfig
+    public static func setDefaultConfig(headerConfig: RefreshableHeaderConfig?,
+                                        footerConfig: RefreshableFooterConfig? = nil) {
+        RefreshableConfigure.shared.headerConfig = headerConfig
+        RefreshableConfigure.shared.footerConfig = footerConfig
+    }
+    
+}
+
 /* ==================== OutputRefreshProtocol ==================== */
 // viewModel 中 output使用
 
@@ -80,20 +118,20 @@ public protocol RefreshControllable: class, AssociatedObjectStore, Compatible {}
 public extension NameSpace where Base: RefreshControllable {
     
     /// 告诉外界的 scrollView 当前的刷新状态
-    var refreshStatus : BehaviorRelay<RefreshStatus> {
+    var refreshStatus: BehaviorRelay<RefreshStatus> {
         return base.associatedObject(
             forKey: &refreshStatusKey,
             default: BehaviorRelay<RefreshStatus>(value: .none))
     }
     
     /// 同 refreshStatus，但可以针对不同 scrollView 做出控制
-    var refreshStatusRespective : BehaviorRelay<RespectiveRefreshStatus> {
+    var refreshStatusRespective: BehaviorRelay<RespectiveRefreshStatus> {
         return base.associatedObject(
             forKey: &refreshStatusRespectivelyKey,
             default: BehaviorRelay<RespectiveRefreshStatus>(value: (.none, TagType.default.rawValue)))
     }
     
-    fileprivate func autoSetRefreshStatus(header: RefreshHeader?, footer: RefreshFooter?) -> Disposable {
+    internal func autoSetRefreshStatus(header: RefreshHeader?, footer: RefreshFooter?) -> Disposable {
         return Observable.of (
                 refreshStatusRespective.asObservable(),
                 refreshStatus.asObservable()
@@ -138,42 +176,16 @@ public extension NameSpace where Base: RefreshControllable {
 /* ================== Refreshable ================== */
 // 需要使用 「刷新功能」 时使用
 
-// MARK: 设置默认配置
-public class RefreshableConfigure: NSObject {
-    static let shared = RefreshableConfigure()
-    private override init() { super.init() }
-    
-    fileprivate var headerConfig : RefreshableHeaderConfig?
-    fileprivate var footerConfig: RefreshableFooterConfig?
-    
-    /// 获取默认下拉配置
-    ///
-    /// - Returns: RefreshableHeaderConfig
-    fileprivate static func defaultHeaderConfig() -> RefreshableHeaderConfig? {
-        return RefreshableConfigure.shared.headerConfig
-    }
-    
-    /// 获取默认上拉配置
-    ///
-    /// - Returns: RefreshableFooterConfig
-    fileprivate static func defaultFooterConfig() -> RefreshableFooterConfig? {
-        return RefreshableConfigure.shared.footerConfig
-    }
-    
-    /// 设置默认上拉配置
-    ///
-    /// - Parameters:
-    ///   - headerConfig: RefreshableHeaderConfig
-    ///   - footerConfig: RefreshableFooterConfig
-    public static func setDefaultConfig(headerConfig: RefreshableHeaderConfig?,
-                                        footerConfig: RefreshableFooterConfig? = nil) {
-        RefreshableConfigure.shared.headerConfig = headerConfig
-        RefreshableConfigure.shared.footerConfig = footerConfig
-    }
-    
-}
+// MARK: Refreshable + Rx
 
 public protocol Refreshable: Compatible {}
+
+// Refreshable 绑定方法，核心代码
+// 实现的思路很简单，mj 的action 会发送一个next事件
+// 通过判断RefreshType来决定是刷新数据还是加载更多
+// 但是这个方案也有弊端，action是 一个block，是可以重新赋值的
+// mj 也可以使用set方法 重复赋值，这样会导致信号永远无法发送next事件
+// 还有一个问题是多个scrollview的情况下，只能通过tag来手动触发事件挺傻的
 
 public extension Reactive where Base: Refreshable {
     /// 下拉控件
@@ -189,9 +201,9 @@ public extension Reactive where Base: Refreshable {
         headerConfig: RefreshableHeaderConfig? = nil
     ) -> Observable<Void> {
         
-        return .create { observer -> Disposable in
+        return Observable.create { observer -> Disposable in
             vm.cc.autoSetRefreshStatus(
-                header: self.base.cc.initRefreshHeader(
+                header: initRefreshHeader(
                         scrollView,
                         config: headerConfig)
                         { observer.onNext(()) },
@@ -212,10 +224,10 @@ public extension Reactive where Base: Refreshable {
         footerConfig: RefreshableFooterConfig? = nil
     ) -> Observable<Void> {
         
-        return .create { observer -> Disposable in
+        return Observable.create { observer -> Disposable in
             vm.cc.autoSetRefreshStatus(
                 header: nil,
-                footer: self.base.cc.initRefreshFooter(
+                footer: initRefreshFooter(
                         scrollView,
                         config: footerConfig)
                         { observer.onNext(()) }
@@ -240,11 +252,11 @@ public extension Reactive where Base: Refreshable {
         
         return Observable.create { observer -> Disposable in
             vm.cc.autoSetRefreshStatus(
-                header: self.base.cc.initRefreshHeader(
+                header: initRefreshHeader(
                         scrollView,
                         config: headerConfig)
                         { observer.onNext(.header) },
-                footer: self.base.cc.initRefreshFooter(
+                footer: initRefreshFooter(
                         scrollView,
                         config: footerConfig)
                         { observer.onNext(.footer) }
@@ -253,174 +265,172 @@ public extension Reactive where Base: Refreshable {
     }
 }
 
+
 // MARK: 创建刷新控件
 
-public extension NameSpace where Base: Refreshable {
-
-    fileprivate func initRefreshHeader(
-        _ scrollView: UIScrollView,
-        config: RefreshableHeaderConfig? = nil,
-        _ action: @escaping () -> Void
-    ) -> RefreshHeader? {
-        
-        if config == nil {
-            if let headerConfig = RefreshableConfigure.defaultHeaderConfig() {
-                scrollView.mj_header = createRefreshHeader(scrollView, config: headerConfig, action)
-            } else {
-                scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: action)
-            }
-            scrollView.mj_header?.tag = scrollView.tag
-            return scrollView.mj_header
+func initRefreshHeader(
+    _ scrollView: UIScrollView,
+    config: RefreshableHeaderConfig? = nil,
+    _ action: @escaping () -> Void
+) -> RefreshHeader? {
+    
+    if config == nil {
+        if let headerConfig = RefreshableConfigure.defaultHeaderConfig() {
+            scrollView.mj_header = createRefreshHeader(scrollView, config: headerConfig, action)
+        } else {
+            scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: action)
         }
-        scrollView.mj_header = createRefreshHeader(scrollView, config: config!, action)
         scrollView.mj_header?.tag = scrollView.tag
         return scrollView.mj_header
     }
+    scrollView.mj_header = createRefreshHeader(scrollView, config: config!, action)
+    scrollView.mj_header?.tag = scrollView.tag
+    return scrollView.mj_header
+}
+
+func initRefreshFooter(
+    _ scrollView: UIScrollView,
+    config: RefreshableFooterConfig? = nil,
+    _ action: @escaping RefreshBlock
+) -> RefreshFooter? {
     
-    fileprivate func initRefreshFooter(
-        _ scrollView: UIScrollView,
-        config: RefreshableFooterConfig? = nil,
-        _ action: @escaping RefreshBlock
-    ) -> RefreshFooter? {
-        
-        if config == nil {
-            if let footerConfig = RefreshableConfigure.defaultFooterConfig() {
-                scrollView.mj_footer = createRefreshFooter(scrollView, config: footerConfig, action)
-            } else {
-                scrollView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: action)
-            }
-            scrollView.mj_footer?.tag = scrollView.tag
-            return scrollView.mj_footer
+    if config == nil {
+        if let footerConfig = RefreshableConfigure.defaultFooterConfig() {
+            scrollView.mj_footer = createRefreshFooter(scrollView, config: footerConfig, action)
+        } else {
+            scrollView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: action)
         }
-        
-        scrollView.mj_footer = createRefreshFooter(scrollView, config: config!, action)
         scrollView.mj_footer?.tag = scrollView.tag
         return scrollView.mj_footer
     }
     
-    fileprivate func createRefreshHeader(
-        _ scrollView: UIScrollView,
-        config: RefreshableHeaderConfig ,
-        _ action: @escaping () -> Void
-    ) -> RefreshHeader? {
-        
-        var header: MJRefreshStateHeader?
-        switch config.type {
-        case .normal:
-            let normalHeader = MJRefreshNormalHeader(refreshingBlock: action)
-            normalHeader.loadingView?.style = config.activityIndicatorViewStyle
-            header = normalHeader
-        case .gif:
-            let gifHeader = MJRefreshGifHeader { action() }
-            if config.idleImages.count > 0 {
-                gifHeader.setImages(config.idleImages, for: .idle)
-            }
-            if config.pullingImages.count > 0 {
-                gifHeader.setImages(config.pullingImages, for: .pulling)
-            }
-            if config.refreshingImages.count > 0 {
-                gifHeader.setImages(config.refreshingImages, for: .refreshing)
-            }
-            header = gifHeader
-        case .diy(let HeaderType):
-            return HeaderType.init{ action() }
+    scrollView.mj_footer = createRefreshFooter(scrollView, config: config!, action)
+    scrollView.mj_footer?.tag = scrollView.tag
+    return scrollView.mj_footer
+}
+
+func createRefreshHeader(
+    _ scrollView: UIScrollView,
+    config: RefreshableHeaderConfig,
+    _ action: @escaping () -> Void
+) -> RefreshHeader? {
+    
+    var header: MJRefreshStateHeader?
+    switch config.type {
+    case .normal:
+        let normalHeader = MJRefreshNormalHeader(refreshingBlock: action)
+        normalHeader.loadingView?.style = config.activityIndicatorViewStyle
+        header = normalHeader
+    case .gif:
+        let gifHeader = MJRefreshGifHeader { action() }
+        if config.idleImages.count > 0 {
+            gifHeader.setImages(config.idleImages, for: .idle)
         }
-        
-        // title
-        if config.idleTitle != nil { header?.setTitle(config.idleTitle!, for: .idle) }
-        if config.pullingTitle != nil { header?.setTitle(config.pullingTitle!, for: .pulling) }
-        if config.refreshingTitle != nil { header?.setTitle(config.refreshingTitle!, for: .refreshing) }
-        
-        // font
-        if config.stateFont != nil { header?.stateLabel?.font = config.stateFont! }
-        if config.lastUpdatedTimeFont != nil { header?.lastUpdatedTimeLabel?.font = config.lastUpdatedTimeFont! }
-        
-        // textColor
-        if config.stateColor != nil { header?.stateLabel?.textColor = config.stateColor! }
-        if config.lastUpdatedTimeColor != nil { header?.lastUpdatedTimeLabel?.textColor = config.lastUpdatedTimeColor! }
-        
-        // hide
-        header?.stateLabel?.isHidden = config.hideState
-        header?.lastUpdatedTimeLabel?.isHidden = config.hideLastUpdatedTime
-        
-        // labelLeftInset
-        if config.labelLeftInset != nil { header?.labelLeftInset = config.labelLeftInset! }
-        
-        return header
+        if config.pullingImages.count > 0 {
+            gifHeader.setImages(config.pullingImages, for: .pulling)
+        }
+        if config.refreshingImages.count > 0 {
+            gifHeader.setImages(config.refreshingImages, for: .refreshing)
+        }
+        header = gifHeader
+    case .diy(let HeaderType):
+        return HeaderType.init{ action() }
     }
     
-    fileprivate func createRefreshFooter(
-        _ scrollView: UIScrollView,
-        config: RefreshableFooterConfig ,
-        _ action: @escaping () -> Void
-    ) -> RefreshFooter? {
-        
-        var autoFooter : MJRefreshAutoStateFooter?
-        var backFooter : MJRefreshBackStateFooter?
-        
-        switch config.type {
-        case .autoNormal:
-            let autoNormalFooter = MJRefreshAutoNormalFooter(refreshingBlock: action)
-            autoNormalFooter.loadingView?.style = config.activityIndicatorViewStyle
-            autoFooter = autoNormalFooter
-        case .autoGif:
-            let autoGifFooter = MJRefreshAutoGifFooter(refreshingBlock: action)
-            if config.images.count > 0 {
-                autoGifFooter.setImages(config.images, for: MJRefreshState.refreshing)
-            }
-            autoFooter = autoGifFooter
-        case .backNormal:
-            let backNormalFooter = MJRefreshBackNormalFooter(refreshingBlock: action)
-            backNormalFooter.loadingView?.style = config.activityIndicatorViewStyle
-            backFooter = backNormalFooter
-        case .backGif:
-            let backGifFooter = MJRefreshBackGifFooter(refreshingBlock: action)
-            if config.images.count > 0 {
-                backGifFooter.setImages(config.images, for: MJRefreshState.refreshing)
-            }
-            backFooter = backGifFooter
-        case .diy(let FooterType):
-            return FooterType.init{ action() }
+    // title
+    if config.idleTitle != nil { header?.setTitle(config.idleTitle!, for: .idle) }
+    if config.pullingTitle != nil { header?.setTitle(config.pullingTitle!, for: .pulling) }
+    if config.refreshingTitle != nil { header?.setTitle(config.refreshingTitle!, for: .refreshing) }
+    
+    // font
+    if config.stateFont != nil { header?.stateLabel?.font = config.stateFont! }
+    if config.lastUpdatedTimeFont != nil { header?.lastUpdatedTimeLabel?.font = config.lastUpdatedTimeFont! }
+    
+    // textColor
+    if config.stateColor != nil { header?.stateLabel?.textColor = config.stateColor! }
+    if config.lastUpdatedTimeColor != nil { header?.lastUpdatedTimeLabel?.textColor = config.lastUpdatedTimeColor! }
+    
+    // hide
+    header?.stateLabel?.isHidden = config.hideState
+    header?.lastUpdatedTimeLabel?.isHidden = config.hideLastUpdatedTime
+    
+    // labelLeftInset
+    if config.labelLeftInset != nil { header?.labelLeftInset = config.labelLeftInset! }
+    
+    return header
+}
+
+func createRefreshFooter(
+    _ scrollView: UIScrollView,
+    config: RefreshableFooterConfig,
+    _ action: @escaping () -> Void
+) -> RefreshFooter? {
+    
+    var autoFooter : MJRefreshAutoStateFooter?
+    var backFooter : MJRefreshBackStateFooter?
+    
+    switch config.type {
+    case .autoNormal:
+        let autoNormalFooter = MJRefreshAutoNormalFooter(refreshingBlock: action)
+        autoNormalFooter.loadingView?.style = config.activityIndicatorViewStyle
+        autoFooter = autoNormalFooter
+    case .autoGif:
+        let autoGifFooter = MJRefreshAutoGifFooter(refreshingBlock: action)
+        if config.images.count > 0 {
+            autoGifFooter.setImages(config.images, for: MJRefreshState.refreshing)
         }
-        
-        if autoFooter != nil {
-            // title
-            if config.idleTitle != nil { autoFooter?.setTitle(config.idleTitle!, for: .idle) }
-            if config.refreshingTitle != nil { autoFooter?.setTitle(config.refreshingTitle!, for: .refreshing) }
-            if config.norMoreDataTitle != nil { autoFooter?.setTitle(config.norMoreDataTitle!, for: .noMoreData) }
-            
-            // font
-            if config.stateFont != nil { autoFooter?.stateLabel?.font = config.stateFont! }
-            
-            // textColor
-            if config.stateColor != nil { autoFooter?.stateLabel?.textColor = config.stateColor! }
-            
-            // hide
-            autoFooter?.stateLabel?.isHidden = config.hideState
-            
-            // labelLeftInset
-            if config.labelLeftInset != nil { autoFooter?.labelLeftInset = config.labelLeftInset! }
-            
-            return autoFooter
-        } else {
-            // title
-            if config.idleTitle != nil { backFooter?.setTitle(config.idleTitle!, for: .idle) }
-            if config.refreshingTitle != nil { backFooter?.setTitle(config.refreshingTitle!, for: .refreshing) }
-            if config.norMoreDataTitle != nil { backFooter?.setTitle(config.norMoreDataTitle!, for: .noMoreData) }
-            
-            // font
-            if config.stateFont != nil { backFooter?.stateLabel?.font = config.stateFont! }
-            
-            // textColor
-            if config.stateColor != nil { backFooter?.stateLabel?.textColor = config.stateColor! }
-            
-            // hide
-            backFooter?.stateLabel?.isHidden = config.hideState
-            
-            // labelLeftInset
-            if config.labelLeftInset != nil { backFooter?.labelLeftInset = config.labelLeftInset! }
-            
-            return backFooter
+        autoFooter = autoGifFooter
+    case .backNormal:
+        let backNormalFooter = MJRefreshBackNormalFooter(refreshingBlock: action)
+        backNormalFooter.loadingView?.style = config.activityIndicatorViewStyle
+        backFooter = backNormalFooter
+    case .backGif:
+        let backGifFooter = MJRefreshBackGifFooter(refreshingBlock: action)
+        if config.images.count > 0 {
+            backGifFooter.setImages(config.images, for: MJRefreshState.refreshing)
         }
+        backFooter = backGifFooter
+    case .diy(let FooterType):
+        return FooterType.init{ action() }
+    }
+    
+    if autoFooter != nil {
+        // title
+        if config.idleTitle != nil { autoFooter?.setTitle(config.idleTitle!, for: .idle) }
+        if config.refreshingTitle != nil { autoFooter?.setTitle(config.refreshingTitle!, for: .refreshing) }
+        if config.norMoreDataTitle != nil { autoFooter?.setTitle(config.norMoreDataTitle!, for: .noMoreData) }
+        
+        // font
+        if config.stateFont != nil { autoFooter?.stateLabel?.font = config.stateFont! }
+        
+        // textColor
+        if config.stateColor != nil { autoFooter?.stateLabel?.textColor = config.stateColor! }
+        
+        // hide
+        autoFooter?.stateLabel?.isHidden = config.hideState
+        
+        // labelLeftInset
+        if config.labelLeftInset != nil { autoFooter?.labelLeftInset = config.labelLeftInset! }
+        
+        return autoFooter
+    } else {
+        // title
+        if config.idleTitle != nil { backFooter?.setTitle(config.idleTitle!, for: .idle) }
+        if config.refreshingTitle != nil { backFooter?.setTitle(config.refreshingTitle!, for: .refreshing) }
+        if config.norMoreDataTitle != nil { backFooter?.setTitle(config.norMoreDataTitle!, for: .noMoreData) }
+        
+        // font
+        if config.stateFont != nil { backFooter?.stateLabel?.font = config.stateFont! }
+        
+        // textColor
+        if config.stateColor != nil { backFooter?.stateLabel?.textColor = config.stateColor! }
+        
+        // hide
+        backFooter?.stateLabel?.isHidden = config.hideState
+        
+        // labelLeftInset
+        if config.labelLeftInset != nil { backFooter?.labelLeftInset = config.labelLeftInset! }
+        
+        return backFooter
     }
 }

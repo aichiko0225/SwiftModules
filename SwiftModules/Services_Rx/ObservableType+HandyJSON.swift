@@ -11,7 +11,7 @@ import RxSwift
 import Moya
 import HandyJSON
 
-extension ObservableType where Element: Response {
+public extension ObservableType where Element: Response {
 
     public func mapModel<T: HandyJSON>(_ type: T.Type) -> Observable<T> {
         return flatMap { response -> Observable<T> in

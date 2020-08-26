@@ -2,6 +2,9 @@ PODS:
   - Alamofire (5.2.2)
   - Differentiator (4.0.1)
   - HandyJSON (5.0.2)
+  - Kingfisher (5.15.0):
+    - Kingfisher/Core (= 5.15.0)
+  - Kingfisher/Core (5.15.0)
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.5.0)
   - Moya (14.0.0):
@@ -82,6 +85,7 @@ PODS:
   - YYCache (1.0.4)
 
 DEPENDENCIES:
+  - Kingfisher
   - SwiftModules (from `../`)
 
 SPEC REPOS:
@@ -89,6 +93,7 @@ SPEC REPOS:
     - Alamofire
     - Differentiator
     - HandyJSON
+    - Kingfisher
     - MBProgressHUD
     - MJRefresh
     - Moya
@@ -109,6 +114,7 @@ SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
+  Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
@@ -122,6 +128,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: c9423586e209ee50b07311461a60dc694e7ffb11
+PODFILE CHECKSUM: 8a9b3775529c5d224a89e32f50a058569b8331ee
 
 COCOAPODS: 1.8.4

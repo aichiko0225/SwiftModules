@@ -34,11 +34,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RmX-pg-Jve">
-                                <rect key="frame" x="157.5" y="398" width="99" height="40"/>
+                                <rect key="frame" x="166" y="398" width="82" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="PmW-NC-JPp"/>
                                 </constraints>
-                                <state key="normal" title="collectionView"/>
+                                <state key="normal" title="Refreshable"/>
+                                <connections>
+                                    <segue destination="vdC-mq-kfi" kind="show" id="AJU-rv-rx3"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89g-Dj-DOR">
                                 <rect key="frame" x="149.5" y="458" width="115" height="40"/>
@@ -85,6 +88,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3JE-Bf-Vod" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1533" y="405"/>
+        </scene>
+        <!--RefreshableController-->
+        <scene sceneID="pWK-F3-oWN">
+            <objects>
+                <viewController id="vdC-mq-kfi" customClass="RefreshableController" customModule="SwiftModulesDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JAv-YY-c86">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="bfw-9T-8YN"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="RefreshableController" id="Mwd-eg-an1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eUh-fR-Xhz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2658" y="122"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="lJI-t2-tko">
