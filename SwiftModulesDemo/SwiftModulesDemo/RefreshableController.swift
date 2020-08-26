@@ -24,7 +24,7 @@ class RefreshableCell: UITableViewCell {
         self.contentView.addSubview(picView)
         picView.layer.masksToBounds = true
         picView.contentMode = .scaleAspectFit
-        picView.frame = CGRect(x: 0, y: 10, width: UIScreen.main.bounds.size.width, height: 100)
+        picView.frame = CGRect(x: 0, y: 10, width: UIScreen.main.bounds.size.width, height: 250)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,7 +46,7 @@ class RefreshableController: UIViewController, Refreshable {
     
     override func cc_setupUI() {
         tableView.register(cellWithClass: RefreshableCell.self)
-        tableView.rowHeight = 120
+        tableView.rowHeight = 270
         
         view.addSubview(tableView)
         tableView.frame = view.bounds
@@ -58,7 +58,7 @@ class RefreshableController: UIViewController, Refreshable {
     override func cc_bindViewModel() {
         
         // 仅添加headerView
-//        _ = rx.headerRefresh(viewModel, tableView)
+//        _ = rx.headerRefresh(rviewModel, tableView)
         // 仅添加footerView
 //        _ = rx.footerRefresh(viewModel, tableView)
         
@@ -69,13 +69,9 @@ class RefreshableController: UIViewController, Refreshable {
         .bind(to: viewModel.refreshSubject, viewModel.loadDataSubject)
         .disposed(by: rx.disposeBag)
         
-        viewModel.dataSources.do(onNext: { [weak self] (arr) in
-            self?.tableView.mj_header?.endRefreshing()
-            self?.tableView.mj_footer?.endRefreshing()
+        viewModel.dataSources.subscribe(onNext: { [weak self] (_) in
             self?.tableView.reloadData()
-        }).subscribe { (_) in
-            
-        }.disposed(by: rx.disposeBag)
+        }).disposed(by: rx.disposeBag)
         
         viewModel.cc.refreshStatus.accept(.beginHeaderRefresh)
 

@@ -51,6 +51,13 @@ class RefreshableViewModel: NSObject, RefreshControllable {
                     .scan([], accumulator: { $0 + $1 })
         }
         
+        values.do(onNext: { [weak self] (arr) in
+            self?.cc.refreshStatus.accept(.endHeaderRefresh)
+            self?.cc.refreshStatus.accept(.endFooterRefresh)
+        }).subscribe { (_) in
+            
+        }.disposed(by: rx.disposeBag)
+        
         values.bind(to: dataSources).disposed(by: rx.disposeBag)
     }
     
