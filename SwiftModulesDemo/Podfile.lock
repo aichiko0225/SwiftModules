@@ -1,12 +1,13 @@
 PODS:
   - Alamofire (5.2.2)
+  - CCEmptyDataSet (0.3.1)
   - Differentiator (4.0.1)
   - HandyJSON (5.0.2)
   - Kingfisher (5.15.0):
     - Kingfisher/Core (= 5.15.0)
   - Kingfisher/Core (5.15.0)
   - MBProgressHUD (1.2.0)
-  - MJRefresh (3.5.0)
+  - MJRefresh (3.4.3)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
@@ -80,6 +81,10 @@ PODS:
     - RxSwift (~> 5.0)
     - SwiftModules/Services
     - SwiftyBeaver
+  - SwiftModules/Utility (0.1.0):
+    - CCEmptyDataSet
+    - MBProgressHUD
+    - SwiftyBeaver
   - SwiftyBeaver (1.9.1)
   - SwiftyJSON (5.0.0)
   - YYCache (1.0.4)
@@ -87,13 +92,13 @@ PODS:
 DEPENDENCIES:
   - Kingfisher
   - SwiftModules (from `../`)
+  - SwiftModules/Utility (from `../`)
 
 SPEC REPOS:
-  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
+  https://github.com/CocoaPods/Specs:
     - Alamofire
     - Differentiator
     - HandyJSON
-    - Kingfisher
     - MBProgressHUD
     - MJRefresh
     - Moya
@@ -105,6 +110,9 @@ SPEC REPOS:
     - SwiftyBeaver
     - SwiftyJSON
     - YYCache
+  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
+    - CCEmptyDataSet
+    - Kingfisher
 
 EXTERNAL SOURCES:
   SwiftModules:
@@ -112,22 +120,23 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  CCEmptyDataSet: a411e7f642c163c7d0316fb7d867f1e99bc5e691
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
   Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
-  MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
+  MJRefresh: 53e3e3219f204425ee6d3e62e8733d3295944cd6
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
-  SwiftModules: f5425279a6f5cae7875374fe8c045c383896893d
+  SwiftModules: f9f329a1a1531778b660e26b7693b1877f4c614b
   SwiftyBeaver: a1f5691458561414bcfab51874b2b7445451602b
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 8a9b3775529c5d224a89e32f50a058569b8331ee
+PODFILE CHECKSUM: d81b7e336e5f6ceffdd1279cbd8e382ec388486d
 
 COCOAPODS: 1.8.4

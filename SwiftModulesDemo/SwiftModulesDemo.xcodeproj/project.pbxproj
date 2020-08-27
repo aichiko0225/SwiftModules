@@ -11,6 +11,8 @@
 		5E64D14124F4FB180040BCB4 /* RefreshableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64D14024F4FB180040BCB4 /* RefreshableController.swift */; };
 		5E64D14324F4FB710040BCB4 /* GankApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64D14224F4FB710040BCB4 /* GankApi.swift */; };
 		5E64D14524F500770040BCB4 /* RefreshableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64D14424F500770040BCB4 /* RefreshableViewModel.swift */; };
+		5E64D15524F7A0C10040BCB4 /* EmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E64D15424F7A0C10040BCB4 /* EmptyViewController.m */; };
+		5E64D15824F7A5190040BCB4 /* CCEmptyDataSetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E64D15624F7A5190040BCB4 /* CCEmptyDataSetManager.m */; };
 		5EAA573524EBA50A008A7FBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA573424EBA50A008A7FBD /* AppDelegate.swift */; };
 		5EAA573724EBA50A008A7FBD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA573624EBA50A008A7FBD /* SceneDelegate.swift */; };
 		5EAA573924EBA50A008A7FBD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA573824EBA50A008A7FBD /* ViewController.swift */; };
@@ -28,6 +30,11 @@
 		5E64D14024F4FB180040BCB4 /* RefreshableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableController.swift; sourceTree = "<group>"; };
 		5E64D14224F4FB710040BCB4 /* GankApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GankApi.swift; sourceTree = "<group>"; };
 		5E64D14424F500770040BCB4 /* RefreshableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableViewModel.swift; sourceTree = "<group>"; };
+		5E64D14F24F79FD80040BCB4 /* SwiftModulesDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftModulesDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		5E64D15324F7A0C10040BCB4 /* EmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyViewController.h; sourceTree = "<group>"; };
+		5E64D15424F7A0C10040BCB4 /* EmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyViewController.m; sourceTree = "<group>"; };
+		5E64D15624F7A5190040BCB4 /* CCEmptyDataSetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCEmptyDataSetManager.m; sourceTree = "<group>"; };
+		5E64D15724F7A5190040BCB4 /* CCEmptyDataSetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCEmptyDataSetManager.h; sourceTree = "<group>"; };
 		5EAA573124EBA50A008A7FBD /* SwiftModulesDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftModulesDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EAA573424EBA50A008A7FBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EAA573624EBA50A008A7FBD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,12 +89,17 @@
 				5EBF080F24F39C9600A5C538 /* CacheViewController.swift */,
 				5E64D14024F4FB180040BCB4 /* RefreshableController.swift */,
 				5E64D14424F500770040BCB4 /* RefreshableViewModel.swift */,
+				5E64D15324F7A0C10040BCB4 /* EmptyViewController.h */,
+				5E64D15424F7A0C10040BCB4 /* EmptyViewController.m */,
+				5E64D15724F7A5190040BCB4 /* CCEmptyDataSetManager.h */,
+				5E64D15624F7A5190040BCB4 /* CCEmptyDataSetManager.m */,
 				5EBF080924F3852500A5C538 /* TestApi.swift */,
 				5E64D14224F4FB710040BCB4 /* GankApi.swift */,
 				5EAA573A24EBA50A008A7FBD /* Main.storyboard */,
 				5EAA573D24EBA50F008A7FBD /* Assets.xcassets */,
 				5EAA573F24EBA50F008A7FBD /* LaunchScreen.storyboard */,
 				5EAA574224EBA50F008A7FBD /* Info.plist */,
+				5E64D14F24F79FD80040BCB4 /* SwiftModulesDemo-Bridging-Header.h */,
 			);
 			path = SwiftModulesDemo;
 			sourceTree = "<group>";
@@ -144,6 +156,7 @@
 				TargetAttributes = {
 					5EAA573024EBA50A008A7FBD = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
 					};
 				};
 			};
@@ -231,6 +244,8 @@
 				5E64D14524F500770040BCB4 /* RefreshableViewModel.swift in Sources */,
 				5E64D14324F4FB710040BCB4 /* GankApi.swift in Sources */,
 				5EAA573724EBA50A008A7FBD /* SceneDelegate.swift in Sources */,
+				5E64D15824F7A5190040BCB4 /* CCEmptyDataSetManager.m in Sources */,
+				5E64D15524F7A0C10040BCB4 /* EmptyViewController.m in Sources */,
 				5EBF080A24F3852500A5C538 /* TestApi.swift in Sources */,
 				5E1BA83124EF645E0070829E /* TableViewController.swift in Sources */,
 				5E64D14124F4FB180040BCB4 /* RefreshableController.swift in Sources */,
@@ -378,6 +393,7 @@
 			baseConfigurationReference = 9D6CD64371F9B53AD27113D0 /* Pods-SwiftModulesDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 49F6BP78T2;
 				INFOPLIST_FILE = SwiftModulesDemo/Info.plist;
@@ -387,6 +403,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ash.SwiftModulesDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftModulesDemo/SwiftModulesDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -397,6 +415,7 @@
 			baseConfigurationReference = C3AA3F9C5B9BBF46EE78D1B9 /* Pods-SwiftModulesDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 49F6BP78T2;
 				INFOPLIST_FILE = SwiftModulesDemo/Info.plist;
@@ -406,6 +425,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ash.SwiftModulesDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftModulesDemo/SwiftModulesDemo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

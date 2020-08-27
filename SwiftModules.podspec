@@ -72,7 +72,22 @@ Pod::Spec.new do |s|
     ss.dependency 'RxDataSources'
     ss.dependency 'MJRefresh'
   end
+
+  # Utility 工具类，其他实用性代码
+  s.subspec 'Utility' do |ss|
+    ss.source_files = 'SwiftModules/Utility/**/*.swift'
+    # CCEmptyDataSet 用于显示空视图
+    # 详细信息请查看 https://github.com/aichiko0225/CCEmptyDataSet
+    ss.dependency 'CCEmptyDataSet'
+  end
   
+  # iOSHelper 一些通用性代码
+  s.subspec 'Helpers' do |ss|
+    ss.source_files = 'SwiftModules/iOS_Helper/**/*.swift'
+  end
+
+  
+
   # s.resource_bundles = {
   #   'SwiftModules' => ['SwiftModules/Assets/*.png']
   # }

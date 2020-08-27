@@ -49,10 +49,12 @@ class RefreshableController: UIViewController, Refreshable {
         tableView.rowHeight = 270
         
         view.addSubview(tableView)
-        tableView.frame = view.bounds
+        tableView.frame = CGRect(x: 0, y: 0, width: view.width, height: view.height-view.safeAreaInsets.bottom)
         tableView.dataSource = self
         
         tableView.tableFooterView = UIView()
+        
+//        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
     }
     
     override func cc_bindViewModel() {
@@ -98,7 +100,8 @@ extension RefreshableController: UITableViewDataSource {
     
 }
 
-// 常用配置
+// MARK: RefreshConfig
+
 struct RefreshConfig {
     
     static let normalHeader = RefreshableHeaderConfig(
@@ -112,9 +115,5 @@ struct RefreshConfig {
         hideLastUpdatedTime: true,
         activityIndicatorViewStyle: UIActivityIndicatorView.Style.medium
     )
-    
-//    static let diyHeader = RefreshableHeaderConfig(type: RefreshHeaderType.diy(type: DIYHeader.self))
-//
-//    static let diyFooter = RefreshableFooterConfig(type: RefreshFooterType.diy(type: DIYAutoFooter.self))
 }
 

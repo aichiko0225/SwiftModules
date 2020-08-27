@@ -105,6 +105,19 @@
 
         ]
       }
+    },
+    {
+      "name": "Utility",
+      "source_files": "SwiftModules/Utility/**/*.swift",
+      "dependencies": {
+        "CCEmptyDataSet": [
+
+        ]
+      }
+    },
+    {
+      "name": "Helpers",
+      "source_files": "SwiftModules/iOS_Helper/**/*.swift"
     }
   ],
   "swift_version": "5.0"
