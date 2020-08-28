@@ -86,7 +86,6 @@ Pod::Spec.new do |s|
   s.subspec 'Helpers' do |ss|
     ss.source_files = 'SwiftModules/iOS_Helper/**/*.{h,m,swift}'
   end
-
   # s.resource_bundles = {
   #   'SwiftModules' => ['SwiftModules/Assets/*.png']
   # }

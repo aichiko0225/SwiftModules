@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.2.2)
+  - Category (0.0.1)
   - CCEmptyDataSet (0.3.1)
   - Differentiator (4.0.1)
   - HandyJSON (5.0.2)
@@ -104,6 +105,7 @@ PODS:
   - YYCache (1.0.4)
 
 DEPENDENCIES:
+  - Category (from `./Category`)
   - Reveal-SDK (= 21)
   - SwiftModules (from `../`)
   - SwiftModules/Helpers (from `../`)
@@ -132,11 +134,14 @@ SPEC REPOS:
     - SnapKit
 
 EXTERNAL SOURCES:
+  Category:
+    :path: "./Category"
   SwiftModules:
     :path: "../"
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  Category: 34e3a0b4b337aeb29a560c0794ec2140bc78853a
   CCEmptyDataSet: a411e7f642c163c7d0316fb7d867f1e99bc5e691
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
@@ -156,6 +161,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 38a7ca3c8248ee3adb560f20c0cb38021285770b
+PODFILE CHECKSUM: 1b49d262a6c7278135ce9df5500bd02eeb6f05cd
 
 COCOAPODS: 1.8.4
