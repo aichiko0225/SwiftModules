@@ -13,6 +13,7 @@
 		5E64D14524F500770040BCB4 /* RefreshableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64D14424F500770040BCB4 /* RefreshableViewModel.swift */; };
 		5E64D15524F7A0C10040BCB4 /* EmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E64D15424F7A0C10040BCB4 /* EmptyViewController.m */; };
 		5E64D15824F7A5190040BCB4 /* CCEmptyDataSetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E64D15624F7A5190040BCB4 /* CCEmptyDataSetManager.m */; };
+		5E64D15A24F88E8C0040BCB4 /* TransitionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64D15924F88E8C0040BCB4 /* TransitionsViewController.swift */; };
 		5EAA573524EBA50A008A7FBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA573424EBA50A008A7FBD /* AppDelegate.swift */; };
 		5EAA573724EBA50A008A7FBD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA573624EBA50A008A7FBD /* SceneDelegate.swift */; };
 		5EAA573924EBA50A008A7FBD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA573824EBA50A008A7FBD /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 		5E64D15424F7A0C10040BCB4 /* EmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyViewController.m; sourceTree = "<group>"; };
 		5E64D15624F7A5190040BCB4 /* CCEmptyDataSetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCEmptyDataSetManager.m; sourceTree = "<group>"; };
 		5E64D15724F7A5190040BCB4 /* CCEmptyDataSetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCEmptyDataSetManager.h; sourceTree = "<group>"; };
+		5E64D15924F88E8C0040BCB4 /* TransitionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionsViewController.swift; sourceTree = "<group>"; };
 		5EAA573124EBA50A008A7FBD /* SwiftModulesDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftModulesDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EAA573424EBA50A008A7FBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EAA573624EBA50A008A7FBD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				5EBF080F24F39C9600A5C538 /* CacheViewController.swift */,
 				5E64D14024F4FB180040BCB4 /* RefreshableController.swift */,
 				5E64D14424F500770040BCB4 /* RefreshableViewModel.swift */,
+				5E64D15924F88E8C0040BCB4 /* TransitionsViewController.swift */,
 				5E64D15324F7A0C10040BCB4 /* EmptyViewController.h */,
 				5E64D15424F7A0C10040BCB4 /* EmptyViewController.m */,
 				5E64D15724F7A5190040BCB4 /* CCEmptyDataSetManager.h */,
@@ -245,6 +248,7 @@
 				5E64D14324F4FB710040BCB4 /* GankApi.swift in Sources */,
 				5EAA573724EBA50A008A7FBD /* SceneDelegate.swift in Sources */,
 				5E64D15824F7A5190040BCB4 /* CCEmptyDataSetManager.m in Sources */,
+				5E64D15A24F88E8C0040BCB4 /* TransitionsViewController.swift in Sources */,
 				5E64D15524F7A0C10040BCB4 /* EmptyViewController.m in Sources */,
 				5EBF080A24F3852500A5C538 /* TestApi.swift in Sources */,
 				5E1BA83124EF645E0070829E /* TableViewController.swift in Sources */,

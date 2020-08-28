@@ -79,14 +79,13 @@ Pod::Spec.new do |s|
     # CCEmptyDataSet 用于显示空视图
     # 详细信息请查看 https://github.com/aichiko0225/CCEmptyDataSet
     ss.dependency 'CCEmptyDataSet'
+    ss.dependency 'Kingfisher'
   end
   
   # iOSHelper 一些通用性代码
   s.subspec 'Helpers' do |ss|
-    ss.source_files = 'SwiftModules/iOS_Helper/**/*.swift'
+    ss.source_files = 'SwiftModules/iOS_Helper/**/*.{h,m,swift}'
   end
-
-  
 
   # s.resource_bundles = {
   #   'SwiftModules' => ['SwiftModules/Assets/*.png']
@@ -94,7 +93,9 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.dependency 'AFNetworking', '~> 2.3'
-  
+
+  # 约束布局
+  s.dependency 'SnapKit'
   # MBProgressHUD - HUD显示
   s.dependency 'MBProgressHUD'
   # Logger

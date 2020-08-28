@@ -35,6 +35,9 @@
     "UIKit"
   ],
   "dependencies": {
+    "SnapKit": [
+
+    ],
     "MBProgressHUD": [
 
     ],
@@ -112,12 +115,15 @@
       "dependencies": {
         "CCEmptyDataSet": [
 
+        ],
+        "Kingfisher": [
+
         ]
       }
     },
     {
       "name": "Helpers",
-      "source_files": "SwiftModules/iOS_Helper/**/*.swift"
+      "source_files": "SwiftModules/iOS_Helper/**/*.{h,m,swift}"
     }
   ],
   "swift_version": "5.0"

@@ -10,6 +10,7 @@
 #import <Photos/Photos.h>
 #import <AVFoundation/AVFoundation.h>
 #import <MapKit/MapKit.h>
+
 @implementation AuthorizationManager
 
 +(instancetype)sharedAuthorizationManager

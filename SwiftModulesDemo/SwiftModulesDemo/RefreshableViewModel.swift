@@ -20,7 +20,7 @@ struct RefreshableModel: HandyJSON {
     var used : String = ""
     var who : String = ""
     
-    init() { }
+    init() {}
 }
 
 class RefreshableViewModel: NSObject, RefreshControllable {

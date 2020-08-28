@@ -12,6 +12,7 @@ PODS:
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
+  - Reveal-SDK (21)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -22,6 +23,7 @@ PODS:
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
+  - SnapKit (5.0.1)
   - SwifterSwift (5.2.0):
     - SwifterSwift/AppKit (= 5.2.0)
     - SwifterSwift/CoreAnimation (= 5.2.0)
@@ -49,18 +51,25 @@ PODS:
   - SwifterSwift/UIKit (5.2.0)
   - SwiftModules (0.1.0):
     - MBProgressHUD
+    - SnapKit
     - SwiftModules/Extensions (= 0.1.0)
     - SwiftModules/RxComponents (= 0.1.0)
     - SwiftModules/Services_Rx (= 0.1.0)
     - SwiftyBeaver
   - SwiftModules/Extensions (0.1.0):
     - MBProgressHUD
+    - SnapKit
     - SwifterSwift
     - SwiftModules/Extensions/Swizzled (= 0.1.0)
     - SwiftyBeaver
   - SwiftModules/Extensions/Swizzled (0.1.0):
     - MBProgressHUD
+    - SnapKit
     - SwifterSwift
+    - SwiftyBeaver
+  - SwiftModules/Helpers (0.1.0):
+    - MBProgressHUD
+    - SnapKit
     - SwiftyBeaver
   - SwiftModules/RxComponents (0.1.0):
     - MBProgressHUD
@@ -68,30 +77,36 @@ PODS:
     - RxCocoa
     - RxDataSources
     - RxSwift
+    - SnapKit
     - SwiftyBeaver
   - SwiftModules/Services (0.1.0):
     - HandyJSON (~> 5.0.2)
     - MBProgressHUD
     - Moya
+    - SnapKit
     - SwiftyBeaver
     - SwiftyJSON
     - YYCache
   - SwiftModules/Services_Rx (0.1.0):
     - MBProgressHUD
     - RxSwift (~> 5.0)
+    - SnapKit
     - SwiftModules/Services
     - SwiftyBeaver
   - SwiftModules/Utility (0.1.0):
     - CCEmptyDataSet
+    - Kingfisher
     - MBProgressHUD
+    - SnapKit
     - SwiftyBeaver
   - SwiftyBeaver (1.9.1)
   - SwiftyJSON (5.0.0)
   - YYCache (1.0.4)
 
 DEPENDENCIES:
-  - Kingfisher
+  - Reveal-SDK (= 21)
   - SwiftModules (from `../`)
+  - SwiftModules/Helpers (from `../`)
   - SwiftModules/Utility (from `../`)
 
 SPEC REPOS:
@@ -113,6 +128,8 @@ SPEC REPOS:
   https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
     - CCEmptyDataSet
     - Kingfisher
+    - Reveal-SDK
+    - SnapKit
 
 EXTERNAL SOURCES:
   SwiftModules:
@@ -127,16 +144,18 @@ SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: 53e3e3219f204425ee6d3e62e8733d3295944cd6
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  Reveal-SDK: 3523e0eb7c562811c51bb71da6e523a6373702c8
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
-  SwiftModules: f9f329a1a1531778b660e26b7693b1877f4c614b
+  SwiftModules: ae5b6a058c6ba028f87f7de8ce6f14b008689161
   SwiftyBeaver: a1f5691458561414bcfab51874b2b7445451602b
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: d81b7e336e5f6ceffdd1279cbd8e382ec388486d
+PODFILE CHECKSUM: 38a7ca3c8248ee3adb560f20c0cb38021285770b
 
 COCOAPODS: 1.8.4

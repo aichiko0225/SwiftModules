@@ -7,13 +7,13 @@ source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 
 target 'SwiftModulesDemo' do
 
+  pod 'Reveal-SDK','21', :configurations => ['Debug'] #Reveal21 使用
+  
   pod 'SwiftModules', :path => '../'
   # 工具类代码
   pod 'SwiftModules/Utility', :path => '../'
   
-#  pod 'SwiftModules/Helpers', :path => '../'
-  
-  pod 'Kingfisher'
+  pod 'SwiftModules/Helpers', :path => '../'
   # git 地址下载
 #  pod 'SwiftModules', :git => 'https://github.com/aichiko0225/SwiftModules'
 end

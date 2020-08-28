@@ -8,10 +8,11 @@
 
 #import "EmptyViewController.h"
 #import <CCEmptyDataSet.h>
+#import "CCEmptyDataSetManager.h"
 
 @interface EmptyViewController ()<CCEmptyDataSetSource, CCEmptyDataSetDelegate>
 {
-//    CCEmptyDataSetManager *_emptyManager;
+    CCEmptyDataSetManager *_emptyManager;
 }
 @property (nonatomic, assign) BOOL isRefresh;
 

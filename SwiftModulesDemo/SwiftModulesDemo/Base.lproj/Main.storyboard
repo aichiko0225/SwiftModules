@@ -53,16 +53,28 @@
                                     <segue destination="KkE-RA-dKs" kind="show" id="FoQ-0t-4ob"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGe-FC-e7t">
+                                <rect key="frame" x="144" y="518" width="126" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="3lG-dP-XBO"/>
+                                </constraints>
+                                <state key="normal" title="TransitionExample"/>
+                                <connections>
+                                    <segue destination="pTX-eP-lgd" kind="show" id="Oh5-49-K4Q"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="QUV-f9-WH3" firstAttribute="centerX" secondItem="WH2-S0-Nod" secondAttribute="centerX" id="6kZ-58-ByD"/>
+                            <constraint firstItem="WGe-FC-e7t" firstAttribute="centerX" secondItem="89g-Dj-DOR" secondAttribute="centerX" id="Dzz-av-jzN"/>
                             <constraint firstItem="RmX-pg-Jve" firstAttribute="top" secondItem="QUV-f9-WH3" secondAttribute="bottom" constant="20" id="Pf6-mc-Gbf"/>
                             <constraint firstItem="RmX-pg-Jve" firstAttribute="centerX" secondItem="QUV-f9-WH3" secondAttribute="centerX" id="RWX-HR-zUI"/>
                             <constraint firstItem="WH2-S0-Nod" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="Y7t-yq-dIg"/>
                             <constraint firstItem="89g-Dj-DOR" firstAttribute="centerX" secondItem="RmX-pg-Jve" secondAttribute="centerX" id="crX-ts-f12"/>
                             <constraint firstItem="WH2-S0-Nod" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dkn-ck-H1G"/>
                             <constraint firstItem="89g-Dj-DOR" firstAttribute="top" secondItem="RmX-pg-Jve" secondAttribute="bottom" constant="20" id="exg-ON-0wi"/>
+                            <constraint firstItem="WGe-FC-e7t" firstAttribute="top" secondItem="89g-Dj-DOR" secondAttribute="bottom" constant="20" id="oqi-lc-10y"/>
                             <constraint firstItem="QUV-f9-WH3" firstAttribute="top" secondItem="WH2-S0-Nod" secondAttribute="bottom" constant="30" id="ujt-3C-E52"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -78,6 +90,91 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="500" y="51"/>
+        </scene>
+        <!--TransitionExample-->
+        <scene sceneID="iMt-GJ-m65">
+            <objects>
+                <viewController id="pTX-eP-lgd" customClass="TransitionsViewController" customModule="SwiftModulesDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3BD-3Q-cuK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KH1-WA-G9e">
+                                <rect key="frame" x="156.5" y="108" width="101" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="oVd-hl-cnQ"/>
+                                </constraints>
+                                <state key="normal" title="FilterTransition"/>
+                                <connections>
+                                    <action selector="filterAction:" destination="pTX-eP-lgd" eventType="touchUpInside" id="ijr-o9-ZLE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaf-H8-Xzr">
+                                <rect key="frame" x="178.5" y="198" width="57" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="H05-sP-oGk"/>
+                                </constraints>
+                                <state key="normal" title="Alert VC"/>
+                                <connections>
+                                    <segue destination="pl2-7e-5ky" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="fn5-fC-dF3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="gaf-H8-Xzr" firstAttribute="centerX" secondItem="KH1-WA-G9e" secondAttribute="centerX" id="Iq4-Aj-QW5"/>
+                            <constraint firstItem="gaf-H8-Xzr" firstAttribute="top" secondItem="KH1-WA-G9e" secondAttribute="bottom" constant="50" id="uG0-fU-jcW"/>
+                            <constraint firstItem="KH1-WA-G9e" firstAttribute="centerX" secondItem="2l8-WM-ppG" secondAttribute="centerX" id="uhR-RK-20U"/>
+                            <constraint firstItem="KH1-WA-G9e" firstAttribute="top" secondItem="2l8-WM-ppG" secondAttribute="top" constant="20" id="vBC-gr-DQd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2l8-WM-ppG"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="TransitionExample" id="piV-PO-Foo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3FX-xJ-NvB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="549" y="921"/>
+        </scene>
+        <!--Alert View Controller-->
+        <scene sceneID="mid-27-qiR">
+            <objects>
+                <viewController id="pl2-7e-5ky" customClass="WWAlertViewController" customModule="SwiftModulesDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CSd-oZ-xes">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eLU-31-ad6">
+                                <rect key="frame" x="87" y="194" width="240" height="200"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="O2C-ZA-0PY"/>
+                                    <constraint firstAttribute="width" constant="240" id="Zm7-7E-E8C"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ocN-z1-daW">
+                                <rect key="frame" x="181" y="444" width="52" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="OHT-J3-IIc"/>
+                                </constraints>
+                                <state key="normal" title="dismiss"/>
+                                <connections>
+                                    <action selector="dismissAction:" destination="pl2-7e-5ky" eventType="touchUpInside" id="Pps-aC-4AQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="eLU-31-ad6" firstAttribute="centerX" secondItem="qnU-hn-uNJ" secondAttribute="centerX" id="Cb3-Fa-eDv"/>
+                            <constraint firstItem="ocN-z1-daW" firstAttribute="top" secondItem="eLU-31-ad6" secondAttribute="bottom" constant="50" id="QtS-j7-frI"/>
+                            <constraint firstItem="ocN-z1-daW" firstAttribute="centerX" secondItem="eLU-31-ad6" secondAttribute="centerX" id="aKC-az-2bI"/>
+                            <constraint firstItem="eLU-31-ad6" firstAttribute="top" secondItem="qnU-hn-uNJ" secondAttribute="top" constant="150" id="qN9-tc-ean"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qnU-hn-uNJ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HMv-dS-K4z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1519" y="1156"/>
         </scene>
         <!--CacheExample-->
         <scene sceneID="zTV-y6-nfm">
@@ -111,7 +208,7 @@
             </objects>
             <point key="canvasLocation" x="2658" y="122"/>
         </scene>
-        <!--Empty View Controller-->
+        <!--EmptyData-->
         <scene sceneID="70P-fC-rm6">
             <objects>
                 <tableViewController id="1nd-VK-rjO" customClass="EmptyViewController" sceneMemberID="viewController">
@@ -134,7 +231,7 @@
                             <outlet property="delegate" destination="1nd-VK-rjO" id="kzW-b3-DhK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="4vZ-vq-GcM"/>
+                    <navigationItem key="navigationItem" title="EmptyData" id="4vZ-vq-GcM"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOO-9A-JEo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
