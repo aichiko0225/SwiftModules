@@ -16,4 +16,5 @@ ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
 ${BUILT_PRODUCTS_DIR}/SwifterSwift/SwifterSwift.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
+${BUILT_PRODUCTS_DIR}/URLNavigator/URLNavigator.framework
 ${BUILT_PRODUCTS_DIR}/YYCache/YYCache.framework

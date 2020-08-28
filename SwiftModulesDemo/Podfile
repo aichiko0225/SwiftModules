@@ -14,6 +14,9 @@ target 'SwiftModulesDemo' do
   pod 'SwiftModules/Utility', :path => '../'
   # 以前工程的 通用代码 oc+swift
   pod 'SwiftModules/Helpers', :path => '../'
+  # 路由
+  pod 'SwiftModules/Router', :path => '../'
+  
   # OC 的一些分类
   pod 'Category', :path => './Category'
   

@@ -72,6 +72,11 @@ PODS:
     - MBProgressHUD
     - SnapKit
     - SwiftyBeaver
+  - SwiftModules/Router (0.1.0):
+    - MBProgressHUD
+    - SnapKit
+    - SwiftyBeaver
+    - URLNavigator
   - SwiftModules/RxComponents (0.1.0):
     - MBProgressHUD
     - MJRefresh
@@ -102,6 +107,7 @@ PODS:
     - SwiftyBeaver
   - SwiftyBeaver (1.9.1)
   - SwiftyJSON (5.0.0)
+  - URLNavigator (2.3.0)
   - YYCache (1.0.4)
 
 DEPENDENCIES:
@@ -109,6 +115,7 @@ DEPENDENCIES:
   - Reveal-SDK (= 21)
   - SwiftModules (from `../`)
   - SwiftModules/Helpers (from `../`)
+  - SwiftModules/Router (from `../`)
   - SwiftModules/Utility (from `../`)
 
 SPEC REPOS:
@@ -132,6 +139,7 @@ SPEC REPOS:
     - Kingfisher
     - Reveal-SDK
     - SnapKit
+    - URLNavigator
 
 EXTERNAL SOURCES:
   Category:
@@ -156,11 +164,12 @@ SPEC CHECKSUMS:
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
-  SwiftModules: ae5b6a058c6ba028f87f7de8ce6f14b008689161
+  SwiftModules: 7fead7d0d555329274e304b79e6ec11b225453f9
   SwiftyBeaver: a1f5691458561414bcfab51874b2b7445451602b
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 1b49d262a6c7278135ce9df5500bd02eeb6f05cd
+PODFILE CHECKSUM: 7c580d02b331c7d6378d797b3d9540b3baa2f2f6
 
 COCOAPODS: 1.8.4

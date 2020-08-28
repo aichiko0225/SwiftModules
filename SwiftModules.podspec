@@ -81,6 +81,12 @@ Pod::Spec.new do |s|
     ss.dependency 'CCEmptyDataSet'
     ss.dependency 'Kingfisher'
   end
+
+  s.subspec 'Router' do |ss|
+    ss.source_files = 'SwiftModules/Router/*.swift'
+    # URLNavigator 路由依赖，无敌的
+    ss.dependency "URLNavigator"
+  end
   
   # iOSHelper 一些通用性代码
   s.subspec 'Helpers' do |ss|

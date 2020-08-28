@@ -122,6 +122,15 @@
       }
     },
     {
+      "name": "Router",
+      "source_files": "SwiftModules/Router/*.swift",
+      "dependencies": {
+        "URLNavigator": [
+
+        ]
+      }
+    },
+    {
       "name": "Helpers",
       "source_files": "SwiftModules/iOS_Helper/**/*.{h,m,swift}"
     }
