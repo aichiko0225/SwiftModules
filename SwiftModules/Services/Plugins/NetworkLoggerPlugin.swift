@@ -15,6 +15,8 @@ public class CCNetworkLoggerPlugin: PluginType {
     /// 开始请求字典
     private static var startDates: [String: Date] = [:]
     
+    private static let lock = NSLock()
+    
     public init() {
         
     }
@@ -23,6 +25,10 @@ public class CCNetworkLoggerPlugin: PluginType {
     public func willSend(_ request: RequestType, target: TargetType) {
         #if DEBUG
         // 设置当前时间
+        CCNetworkLoggerPlugin.lock.lock()
+        defer {
+            CCNetworkLoggerPlugin.lock.unlock()
+        }
         CCNetworkLoggerPlugin.startDates[String(describing: target)] = Date()
         #endif
     }

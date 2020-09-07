@@ -8,7 +8,7 @@ PODS:
     - Kingfisher/Core (= 5.15.0)
   - Kingfisher/Core (5.15.0)
   - MBProgressHUD (1.2.0)
-  - MJRefresh (3.4.3)
+  - MJRefresh (3.5.0)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
@@ -68,10 +68,6 @@ PODS:
     - SnapKit
     - SwifterSwift
     - SwiftyBeaver
-  - SwiftModules/Helpers (0.1.0):
-    - MBProgressHUD
-    - SnapKit
-    - SwiftyBeaver
   - SwiftModules/Router (0.1.0):
     - MBProgressHUD
     - SnapKit
@@ -114,32 +110,30 @@ DEPENDENCIES:
   - Category (from `./Category`)
   - Reveal-SDK (= 21)
   - SwiftModules (from `../`)
-  - SwiftModules/Helpers (from `../`)
   - SwiftModules/Router (from `../`)
   - SwiftModules/Utility (from `../`)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs:
+  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
     - Alamofire
+    - CCEmptyDataSet
     - Differentiator
     - HandyJSON
+    - Kingfisher
     - MBProgressHUD
     - MJRefresh
     - Moya
+    - Reveal-SDK
     - RxCocoa
     - RxDataSources
     - RxRelay
     - RxSwift
+    - SnapKit
     - SwifterSwift
     - SwiftyBeaver
     - SwiftyJSON
-    - YYCache
-  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
-    - CCEmptyDataSet
-    - Kingfisher
-    - Reveal-SDK
-    - SnapKit
     - URLNavigator
+    - YYCache
 
 EXTERNAL SOURCES:
   Category:
@@ -155,7 +149,7 @@ SPEC CHECKSUMS:
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
   Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
-  MJRefresh: 53e3e3219f204425ee6d3e62e8733d3295944cd6
+  MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   Reveal-SDK: 3523e0eb7c562811c51bb71da6e523a6373702c8
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
@@ -170,6 +164,6 @@ SPEC CHECKSUMS:
   URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 7c580d02b331c7d6378d797b3d9540b3baa2f2f6
+PODFILE CHECKSUM: 329dbcaaf23500a160c9e6757cd279a8f115edc3
 
 COCOAPODS: 1.8.4

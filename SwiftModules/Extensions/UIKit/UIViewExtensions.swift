@@ -27,8 +27,8 @@ extension UIView {
         var height: CGFloat = 0
         for someView in self.subviews {
             let aView = someView
-            let newWidth = aView.x + aView.w
-            let newHeight = aView.y + aView.h
+            let newWidth = aView.x + aView.width
+            let newHeight = aView.y + aView.height
             width = max(width, newWidth)
             height = max(height, newHeight)
         }
@@ -42,8 +42,8 @@ extension UIView {
         for someView in self.subviews {
             let aView = someView
             if !tagsToIgnore.contains(someView.tag) {
-                let newWidth = aView.x + aView.w
-                let newHeight = aView.y + aView.h
+                let newWidth = aView.x + aView.width
+                let newHeight = aView.y + aView.height
                 width = max(width, newWidth)
                 height = max(height, newHeight)
             }
@@ -53,150 +53,16 @@ extension UIView {
 
     /// resizes this view so as to fit its width.
     public func resizeToFitWidth() {
-        let currentHeight = self.h
+        let currentHeight = self.height
         self.sizeToFit()
-        self.h = currentHeight
+        self.height = currentHeight
     }
 
     /// resizes this view so as to fit its height.
     public func resizeToFitHeight() {
-        let currentWidth = self.w
+        let currentWidth = self.width
         self.sizeToFit()
-        self.w = currentWidth
-    }
-
-    /// getter and setter for the x coordinate of the frame's origin for the view.
-    public var x: CGFloat {
-        get {
-            return self.frame.origin.x
-        } set(value) {
-            self.frame = CGRect(x: value, y: self.y, width: self.w, height: self.h)
-        }
-    }
-
-    /// getter and setter for the y coordinate of the frame's origin for the view.
-    public var y: CGFloat {
-        get {
-            return self.frame.origin.y
-        } set(value) {
-            self.frame = CGRect(x: self.x, y: value, width: self.w, height: self.h)
-        }
-    }
-
-    /// variable to get the width of the view.
-    public var w: CGFloat {
-        get {
-            return self.frame.size.width
-        } set(value) {
-            self.frame = CGRect(x: self.x, y: self.y, width: value, height: self.h)
-        }
-    }
-
-    /// variable to get the height of the view.
-    public var h: CGFloat {
-        get {
-            return self.frame.size.height
-        } set(value) {
-            self.frame = CGRect(x: self.x, y: self.y, width: self.w, height: value)
-        }
-    }
-
-    /// getter and setter for the x coordinate of leftmost edge of the view.
-    public var left: CGFloat {
-        get {
-            return self.x
-        } set(value) {
-            self.x = value
-        }
-    }
-
-    /// getter and setter for the x coordinate of the rightmost edge of the view.
-    public var right: CGFloat {
-        get {
-            return self.x + self.w
-        } set(value) {
-            self.x = value - self.w
-        }
-    }
-
-    /// getter and setter for the y coordinate for the topmost edge of the view.
-    public var top: CGFloat {
-        get {
-            return self.y
-        } set(value) {
-            self.y = value
-        }
-    }
-
-    /// getter and setter for the y coordinate of the bottom most edge of the view.
-    public var bottom: CGFloat {
-        get {
-            return self.y + self.h
-        } set(value) {
-            self.y = value - self.h
-        }
-    }
-
-    /// getter and setter the frame's origin point of the view.
-    public var origin: CGPoint {
-        get {
-            return self.frame.origin
-        } set(value) {
-            self.frame = CGRect(origin: value, size: self.frame.size)
-        }
-    }
-
-    /// getter and setter for the X coordinate of the center of a view.
-    public var centerX: CGFloat {
-        get {
-            return self.center.x
-        } set(value) {
-            self.center.x = value
-        }
-    }
-
-    /// getter and setter for the Y coordinate for the center of a view.
-    public var centerY: CGFloat {
-        get {
-            return self.center.y
-        } set(value) {
-            self.center.y = value
-        }
-    }
-
-    /// getter and setter for frame size for the view.
-    public var size: CGSize {
-        get {
-            return self.frame.size
-        } set(value) {
-            self.frame = CGRect(origin: self.frame.origin, size: value)
-        }
-    }
-
-    /// getter for an leftwards offset position from the leftmost edge.
-    public func leftOffset(_ offset: CGFloat) -> CGFloat {
-        return self.left - offset
-    }
-
-    /// getter for an rightwards offset position from the rightmost edge.
-    public func rightOffset(_ offset: CGFloat) -> CGFloat {
-        return self.right + offset
-    }
-
-    /// aligns the view to the top by a given offset.
-    public func topOffset(_ offset: CGFloat) -> CGFloat {
-        return self.top - offset
-    }
-
-    /// align the view to the bottom by a given offset.
-    public func bottomOffset(_ offset: CGFloat) -> CGFloat {
-        return self.bottom + offset
-    }
-
-    //TODO: Add to readme
-    /// align the view widthwise to the right by a given offset.
-    public func alignRight(_ offset: CGFloat) -> CGFloat {
-        return self.w - offset
+        self.width = currentWidth
     }
 
     /// SwiftExtensions
@@ -227,7 +93,7 @@ extension UIView {
             return
         }
 
-        self.x = parentView.w/2 - self.w/2
+        self.x = parentView.width/2 - self.width/2
     }
 
     /// Centers view in superview vertically
@@ -237,7 +103,7 @@ extension UIView {
             return
         }
 
-        self.y = parentView.h/2 - self.h/2
+        self.y = parentView.height/2 - self.height/2
     }
 
     /// Centers view in superview horizontally & vertically
@@ -354,7 +220,7 @@ extension UIView {
     //TODO: add this to readme
     /// SwiftExtensions
     public func drawCircle(fillColor: UIColor, strokeColor: UIColor, strokeWidth: CGFloat) {
-        let path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: self.w, height: self.w), cornerRadius: self.w/2)
+        let path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: self.width, height: self.width), cornerRadius: self.width/2)
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.cgPath
         shapeLayer.fillColor = fillColor.cgColor
@@ -365,7 +231,7 @@ extension UIView {
     //TODO: add this to readme
     /// SwiftExtensions
     public func drawStroke(width: CGFloat, color: UIColor) {
-        let path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: self.w, height: self.w), cornerRadius: self.w/2)
+        let path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: self.width, height: self.width), cornerRadius: self.width/2)
         let shapeLayer = CAShapeLayer ()
         shapeLayer.path = path.cgPath
         shapeLayer.fillColor = UIColor.clear.cgColor

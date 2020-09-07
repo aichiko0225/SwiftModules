@@ -13,7 +13,7 @@ target 'SwiftModulesDemo' do
   # 工具类代码
   pod 'SwiftModules/Utility', :path => '../'
   # 以前工程的 通用代码 oc+swift
-  pod 'SwiftModules/Helpers', :path => '../'
+#  pod 'SwiftModules/Helpers', :path => '../'
   # 路由
   pod 'SwiftModules/Router', :path => '../'
   

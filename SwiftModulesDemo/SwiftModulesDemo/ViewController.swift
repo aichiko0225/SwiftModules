@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Category
 
 class AView: UIView {
     
@@ -26,6 +27,8 @@ class AView: UIView {
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var testButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -50,6 +53,7 @@ class ViewController: UIViewController {
 //            .drive(label.rx.coordinates)
 //            .disposed(by: disposeBag)
         
+        testButton.layoutButton(.top, space: 20)
     }
 
 }

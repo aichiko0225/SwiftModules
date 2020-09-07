@@ -11,6 +11,7 @@ import UIKit
 
 //MARK: - 给Navigator 添加一个postValue方法 用于 B模块 主动从 A模块获取值
 public typealias URLPostHandlerFactory = (_ url: URLNavigator.URLConvertible, _ values: [String: Any], _ context: Any?) -> Any?
+
 public typealias URLPostHandler = () -> Any?
 
 open class Router: Navigator {

@@ -63,6 +63,17 @@
                                     <segue destination="pTX-eP-lgd" kind="show" id="Oh5-49-K4Q"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubM-zM-hiV">
+                                <rect key="frame" x="107" y="608" width="200" height="100"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="ZI5-2M-JT9"/>
+                                    <constraint firstAttribute="height" constant="100" id="zBT-ow-qi3"/>
+                                </constraints>
+                                <state key="normal" title="ButtonText" image="pencil.circle.fill" catalog="system">
+                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -74,7 +85,9 @@
                             <constraint firstItem="89g-Dj-DOR" firstAttribute="centerX" secondItem="RmX-pg-Jve" secondAttribute="centerX" id="crX-ts-f12"/>
                             <constraint firstItem="WH2-S0-Nod" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dkn-ck-H1G"/>
                             <constraint firstItem="89g-Dj-DOR" firstAttribute="top" secondItem="RmX-pg-Jve" secondAttribute="bottom" constant="20" id="exg-ON-0wi"/>
+                            <constraint firstItem="ubM-zM-hiV" firstAttribute="top" secondItem="WGe-FC-e7t" secondAttribute="bottom" constant="50" id="i1f-Mc-2Se"/>
                             <constraint firstItem="WGe-FC-e7t" firstAttribute="top" secondItem="89g-Dj-DOR" secondAttribute="bottom" constant="20" id="oqi-lc-10y"/>
+                            <constraint firstItem="ubM-zM-hiV" firstAttribute="centerX" secondItem="WGe-FC-e7t" secondAttribute="centerX" id="qXT-S2-ow6"/>
                             <constraint firstItem="QUV-f9-WH3" firstAttribute="top" secondItem="WH2-S0-Nod" secondAttribute="bottom" constant="30" id="ujt-3C-E52"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -86,6 +99,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="testButton" destination="ubM-zM-hiV" id="2gf-2I-Dlw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -319,4 +335,7 @@
             <point key="canvasLocation" x="-290" y="51"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
+    </resources>
 </document>
