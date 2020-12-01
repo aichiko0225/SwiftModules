@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/aichiko0225/SwiftModules.git', :tag => s.version.to_s }
   s.social_media_url = 'https://github.com/aichiko0225'
 
-  s.static_framework = true
+#  s.static_framework = true
   s.ios.deployment_target = '10.0'
   s.default_subspecs = 'Extensions', 'Services_Rx', 'RxComponents'
   # s.source_files = 'SwiftModules/Classes/**/*'
