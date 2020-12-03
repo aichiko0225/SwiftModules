@@ -1,12 +1,12 @@
 PODS:
-  - Alamofire (5.2.2)
+  - Alamofire (5.4.0)
   - Category (0.0.1)
-  - CCEmptyDataSet (0.3.1)
+  - CCEmptyDataSet (0.3.3)
   - Differentiator (4.0.1)
   - HandyJSON (5.0.2)
-  - Kingfisher (5.15.0):
-    - Kingfisher/Core (= 5.15.0)
-  - Kingfisher/Core (5.15.0)
+  - Kingfisher (5.15.8):
+    - Kingfisher/Core (= 5.15.8)
+  - Kingfisher/Core (5.15.8)
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.5.0)
   - Moya (14.0.0):
@@ -101,7 +101,7 @@ PODS:
     - MBProgressHUD
     - SnapKit
     - SwiftyBeaver
-  - SwiftyBeaver (1.9.1)
+  - SwiftyBeaver (1.9.3)
   - SwiftyJSON (5.0.0)
   - URLNavigator (2.3.0)
   - YYCache (1.0.4)
@@ -142,12 +142,12 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
   Category: 34e3a0b4b337aeb29a560c0794ec2140bc78853a
-  CCEmptyDataSet: a411e7f642c163c7d0316fb7d867f1e99bc5e691
+  CCEmptyDataSet: a29d6b5380927c0522f52d51c234fabaed629e41
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
-  Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
@@ -158,12 +158,12 @@ SPEC CHECKSUMS:
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
-  SwiftModules: 7fead7d0d555329274e304b79e6ec11b225453f9
-  SwiftyBeaver: a1f5691458561414bcfab51874b2b7445451602b
+  SwiftModules: 689a1590b5542769357ce94880fe2a687528949a
+  SwiftyBeaver: 2e8acd6fc90c6d0a27055867a290794926d57c02
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
 PODFILE CHECKSUM: 329dbcaaf23500a160c9e6757cd279a8f115edc3
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.3

@@ -34,7 +34,9 @@ open class FilterPresentationController: UIPresentationController {
        
         if let filterVC = presentedViewController as? UIViewController {
             // 如果为FilterViewController，则加上点击方法，点击可以返回
-            dismissingView.addGestureRecognizer(UITapGestureRecognizer.init(target: filterVC, action: #selector(UIViewController.cc_closeAction)))
+            if let ttt = filterVC as? TransitionCloseEvent {
+                dismissingView.addGestureRecognizer(UITapGestureRecognizer.init(target: filterVC, action: #selector(ttt.cc_closeAction)))
+            }
         }
     }
     
@@ -52,10 +54,23 @@ open class FilterPresentationController: UIPresentationController {
     }
 }
 
-extension UIViewController {
+@objc public protocol TransitionCloseEvent: AnyObject {
+    @objc func cc_closeAction()
+}
+
+extension UIViewController: TransitionCloseEvent {
+    public func cc_closeAction() {
+        let filterTransition = FilterTransition(mode: TransitionConfig.transitionMode)
+        transitioningDelegate = filterTransition
+        modalPresentationStyle = .custom
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+extension TransitionCloseEvent where Self: UIViewController {
     
-    @objc func cc_closeAction() {
-        let filterTransition = FilterTransition()
+    public func cc_closeAction() {
+        let filterTransition = FilterTransition(mode: TransitionConfig.transitionMode)
         transitioningDelegate = filterTransition
         modalPresentationStyle = .custom
         dismiss(animated: true, completion: nil)

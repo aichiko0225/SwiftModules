@@ -35,10 +35,16 @@ class TransitionsViewController: UIViewController {
     @IBAction func filterAction(_ sender: UIButton) {
         let vc = UIViewController()
         vc.view.backgroundColor = .systemOrange
-        let filterTransition = FilterTransition()
+        let filterTransition = FilterTransition(mode: .left)
         vc.transitioningDelegate = filterTransition
         vc.modalPresentationStyle = .custom
         present(vc, animated: true, completion: nil)
     }
     
+//    public override func cc_closeAction() {
+//        let filterTransition = FilterTransition(mode: .left)
+//        transitioningDelegate = filterTransition
+//        modalPresentationStyle = .custom
+//        dismiss(animated: true, completion: nil)
+//    }
 }

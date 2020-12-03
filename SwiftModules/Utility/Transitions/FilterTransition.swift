@@ -8,6 +8,17 @@
 import Foundation
 import UIKit
 
+public class TransitionConfig: NSObject {
+    static var transitionMode: TransitionMode = .right
+}
+
+public enum TransitionMode: Int {
+    // 从左到右
+    case left = 0
+    // 从右到左
+    case right
+}
+
 /// 筛选动作的动画 FilterTransition
 @available(iOS 9.0, *)
 open class FilterTransition: NSObject, UIViewControllerTransitioningDelegate {
@@ -15,6 +26,16 @@ open class FilterTransition: NSObject, UIViewControllerTransitioningDelegate {
     let left: CGFloat = 75
     
     let duration: TimeInterval = 0.25
+    
+    let mode: TransitionMode
+    
+    public init(mode: TransitionMode = .right) {
+        self.mode = mode
+        if TransitionConfig.transitionMode != mode {
+            TransitionConfig.transitionMode = mode
+        }
+        super.init()
+    }
     
     public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return FilterPresentationController(presentedViewController: presented, presenting: presenting)
@@ -59,27 +80,53 @@ extension FilterTransition: UIViewControllerAnimatedTransitioning {
         
         let wasCancelled = !transitionContext.transitionWasCancelled
         
-        if !being {
-            // 转场动画，出现时从屏幕右边滑出
-            if let toView = toView {
-                containerView.addSubview(toView)
+        if mode == .right {
+            if !being {
+                // 转场动画，出现时从屏幕右边滑出
+                if let toView = toView {
+                    containerView.addSubview(toView)
+                }
+                let t_left = left
+                toView?.frame = CGRect(x: width, y: 0, width: 0, height: height)
+                UIView.animate(withDuration: duration, animations: {
+                    toView?.frame = CGRect(x: t_left, y: 0, width: width-t_left, height: height)
+                }) { (complete) in
+                    transitionContext.completeTransition(wasCancelled)
+                }
+            }else {
+                fromView?.frame = CGRect(x: left, y: 0, width: width-left, height: height)
+                
+                UIView.animate(withDuration: duration, animations: {
+                    fromView?.frame = CGRect(x: width, y: 0, width: 0, height: height)
+                }) { (complete) in
+                    transitionContext.completeTransition(wasCancelled)
+                }
             }
-            let t_left = left
-            toView?.frame = CGRect(x: width, y: 0, width: 0, height: height)
-            UIView.animate(withDuration: duration, animations: {
-                toView?.frame = CGRect(x: t_left, y: 0, width: width-t_left, height: height)
-            }) { (complete) in
-                transitionContext.completeTransition(wasCancelled)
-            }
-        }else {
-            fromView?.frame = CGRect(x: left, y: 0, width: width-left, height: height)
-            
-            UIView.animate(withDuration: duration, animations: {
-                fromView?.frame = CGRect(x: width, y: 0, width: 0, height: height)
-            }) { (complete) in
-                transitionContext.completeTransition(wasCancelled)
+        } else {
+            if !being {
+                // 转场动画，出现时从屏幕左边滑出
+                if let toView = toView {
+                    containerView.addSubview(toView)
+                }
+                let t_left = left
+                toView?.frame = CGRect(x: -width, y: 0, width: 0, height: height)
+                UIView.animate(withDuration: duration, animations: {
+                    toView?.frame = CGRect(x: 0, y: 0, width: width-t_left, height: height)
+                }) { (complete) in
+                    transitionContext.completeTransition(wasCancelled)
+                }
+            }else {
+                fromView?.frame = CGRect(x: 0, y: 0, width: width-left, height: height)
+                
+                UIView.animate(withDuration: duration, animations: {
+                    fromView?.frame = CGRect(x: -width, y: 0, width: 0, height: height)
+                }) { (complete) in
+                    transitionContext.completeTransition(wasCancelled)
+                }
             }
         }
+        
+        
     }
 }
 
