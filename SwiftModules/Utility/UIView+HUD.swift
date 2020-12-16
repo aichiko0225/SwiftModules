@@ -42,10 +42,11 @@ public extension UIView {
         hud?.label.text = title
         hud?.label.font = UIFont.systemFont(ofSize: 16)
         hud?.contentColor = .white
-        hud?.bezelView.color = UIColor.black.withAlphaComponent(0.7)
+        hud?.bezelView.color = UIColor.init(red: 44/255, green: 46/255, blue: 68/255, alpha: 1).withAlphaComponent(0.78)
         hud?.bezelView.style = .solidColor
-        hud?.bezelView.layer.cornerRadius = 6
+        hud?.bezelView.layer.cornerRadius = 8
         hud?.margin = 10
+        hud?.minSize = CGSize(width: 150, height: 0)
         hud?.removeFromSuperViewOnHide = true
         hud?.hide(animated: true, afterDelay: delay)
         if title.isNilOrEmpty {
@@ -67,7 +68,7 @@ public extension UIView {
         hud?.removeFromSuperview()
         hud = MBProgressHUD.showAdded(to: self, animated: true)
         hud?.label.text = title
-        hud?.bezelView.color = UIColor.black.withAlphaComponent(0.7)
+        hud?.bezelView.color = UIColor.init(red: 44/255, green: 46/255, blue: 68/255, alpha: 1).withAlphaComponent(0.78)
         hud?.bezelView.style = .solidColor
         hud?.contentColor = .white
         hud?.removeFromSuperViewOnHide = true

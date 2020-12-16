@@ -55,6 +55,12 @@ class ViewController: UIViewController {
         
         testButton.layoutButton(.top, space: 20)
     }
-
+    
+    
+    @IBAction func showTextAction(_ sender: UIButton) {
+//        showText("显示文本！", position: .bottom)
+        showLoading()
+    }
+    
 }
 
