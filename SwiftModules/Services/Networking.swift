@@ -10,6 +10,7 @@ import Foundation
 @_exported import Moya
 @_exported import Alamofire
 @_exported import HandyJSON
+import SwiftyJSON
 import struct Alamofire.HTTPHeaders
 
 let networkActivityPlugin = NetworkActivityPlugin{ (changeType: NetworkActivityChangeType, targetType: TargetType) in
@@ -44,10 +45,21 @@ open class Networking<Target: TargetType>: MoyaProvider<Target> {
          plugins: [PluginType] = []) {
         var newPlugins = plugins
         // logger
-        newPlugins.append(CCNetworkLoggerPlugin())
+        #if DEBUG
+        let formatter = NetworkLoggerPlugin.Configuration.Formatter(responseData:  { (data) -> (String) in
+            let json = try? JSON(data: data)
+            if let dic_value = json?.dictionaryValue {
+                return dic_value.description
+            }
+            return json?.stringValue ?? "## Cannot map data to String ##"
+        })
+        let config = NetworkLoggerPlugin.Configuration(formatter: formatter, logOptions: .verbose)
+        newPlugins.append(NetworkLoggerPlugin(configuration: config))
+        #endif
         
         newPlugins.append(ResponsePlugin())
-        newPlugins.append(NetworkHeaderPlugin())
+        
+//        newPlugins.append(NetworkHeaderPlugin())
         newPlugins.append(AuthorizationHeaderPlugin())
         // Activity
         newPlugins.append(networkActivityPlugin)
