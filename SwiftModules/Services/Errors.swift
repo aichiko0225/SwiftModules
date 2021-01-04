@@ -41,7 +41,7 @@ public extension Error {
 }
 
 
-extension NetworkError {
+public extension NetworkError {
     /// 错误描述
     var value: String {
         #if DEBUG

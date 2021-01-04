@@ -28,7 +28,7 @@ let networkActivityPlugin = NetworkActivityPlugin{ (changeType: NetworkActivityC
     }
 }
 
-protocol NetworkingType {
+public protocol NetworkingType {
     associatedtype T: TargetType
     var provider: Networking<T> { get }
 }
@@ -57,7 +57,7 @@ open class Networking<Target: TargetType>: MoyaProvider<Target> {
         newPlugins.append(NetworkLoggerPlugin(configuration: config))
         #endif
         
-        newPlugins.append(ResponsePlugin())
+//        newPlugins.append(ResponsePlugin())
         
 //        newPlugins.append(NetworkHeaderPlugin())
         newPlugins.append(AuthorizationHeaderPlugin())

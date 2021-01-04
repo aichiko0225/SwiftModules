@@ -66,7 +66,7 @@ public extension Reactive where Base: MoyaProviderType {
 public extension Reactive where Base: MoyaProviderType {
     
     /// rx 请求 返回 Observable
-    func request(_ token: Base.Target, callbackQueue: DispatchQueue? = nil) -> Observable<Response> {
+    func cc_request(_ token: Base.Target, callbackQueue: DispatchQueue? = nil) -> Observable<Response> {
         return Observable.create { [weak base] observer in
             let cancellableToken = base?.request(token, callbackQueue: callbackQueue, progress: nil) { result in
                 switch result {
