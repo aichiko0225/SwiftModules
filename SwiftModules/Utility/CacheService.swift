@@ -70,6 +70,6 @@ public struct ImageCacheService {
     /// 配置KF缓存
     public func config() {
         // KF 控制最大缓存数
-        ImageCache.default.maxMemoryCost = 20
+//        ImageCache.default.maxMemoryCost = 20
     }
 }

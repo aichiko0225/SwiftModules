@@ -8,8 +8,6 @@
 
 import Foundation
 
-public protocol AutoParamsType: ParamsType {}
-
 /// 网络参数协议
 public protocol ParamsType {
     /// 转换到参数字典

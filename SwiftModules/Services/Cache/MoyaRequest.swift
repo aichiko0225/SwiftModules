@@ -45,7 +45,7 @@ public extension MoyaProviderType {
                             let data = object.cacheData
                             if !data.isEmpty {
                                 // data 不为空
-                                completion(.success(Response.init(statusCode: 200, data: data)))
+                                completion(.success(Response.init(statusCode: 201, data: data)))
                             }
                         }
                     }
@@ -63,10 +63,34 @@ public extension MoyaProviderType {
                     if cacheOption != .none {
                         if let resp = try? response.filterSuccessfulStatusCodes() {
                             // 更新缓存
-                            let cacheM = Cache.default
-                            let cacheKey = target.fetchCacheKey(cacheType)
-                            let cacheModel = CacheCodingdata(resp.data)
-                            cacheM.setObject(cacheModel, key: cacheKey)
+                            // 需要判断是否为正确的data，如果不是正确的data 则不需要走缓存的机制
+                            do {
+                                let anyData = try resp.mapJSON()
+                                // 如果不是字典 无需缓存
+                                guard anyData is NSDictionary else {
+                                    return
+                                }
+                                
+                                let codeKey = NetworkConfigure.codeKey
+                                let successCode = NetworkConfigure.success
+                                let messageKey = NetworkConfigure.messageKey
+                                
+                                guard let jsonDictionary = anyData as? NSDictionary else {
+                                    return
+                                }
+                                guard let code = jsonDictionary.value(forKeyPath: codeKey) as? Int else {
+                                    return
+                                }
+                                guard successCode.contains(.init(rawValue: code)) else {
+                                    return
+                                }
+                                
+                                let cacheM = Cache.default
+                                let cacheKey = target.fetchCacheKey(cacheType)
+                                let cacheModel = CacheCodingdata(resp.data)
+                                cacheM.setObject(cacheModel, key: cacheKey)
+                            } catch {
+                            }
                         }
                     }
                 }

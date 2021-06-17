@@ -99,19 +99,31 @@ public final class Badge {
         }
     }
     
+    public var backgroundColor: UIColor = .red {
+        didSet {
+            switch type {
+            case .none, .point, .count:
+                badgeView.backgroundColor = backgroundColor
+                break
+            default:
+                break
+            }
+        }
+    }
+    
     /// the type of `Badge`
     public var type: BadgeType = .none {
         didSet {
             switch type {
             case .none, .point:
                 badgeView.isHidden = false
-                badgeView.backgroundColor = .red
+                badgeView.backgroundColor = backgroundColor
                 badgeView.numberOfLines = 1
                 badgeView.text = nil
                 badgeView.attributedText = nil
             case .count(let count):
                 badgeView.isHidden = count == 0
-                badgeView.backgroundColor = .red
+                badgeView.backgroundColor = backgroundColor
                 badgeView.numberOfLines = 1
                 let string: String
                 if count > 99 {

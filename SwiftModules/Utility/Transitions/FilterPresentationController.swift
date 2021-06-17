@@ -10,6 +10,8 @@ import UIKit
 @available(iOS 9.0, *)
 open class FilterPresentationController: UIPresentationController {
 
+    var closeBlock: (() -> Void)?
+    
     private var dismissingView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.clear.withAlphaComponent(0.25)
@@ -49,6 +51,7 @@ open class FilterPresentationController: UIPresentationController {
     
     open override func dismissalTransitionDidEnd(_ completed: Bool) {
         if completed {
+            closeBlock?()
             dismissingView.removeFromSuperview()
         }
     }

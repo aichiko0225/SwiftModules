@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 public class TransitionConfig: NSObject {
-    static var transitionMode: TransitionMode = .right
+    public static var transitionMode: TransitionMode = .right
 }
 
 public enum TransitionMode: Int {
@@ -21,16 +21,19 @@ public enum TransitionMode: Int {
 
 /// 筛选动作的动画 FilterTransition
 @available(iOS 9.0, *)
-open class FilterTransition: NSObject, UIViewControllerTransitioningDelegate {
+public class FilterTransition: NSObject, UIViewControllerTransitioningDelegate {
     
-    let left: CGFloat = 75
+    let left: CGFloat = 90
     
-    let duration: TimeInterval = 0.25
+    public var duration: TimeInterval = 0.25
     
     let mode: TransitionMode
     
-    public init(mode: TransitionMode = .right) {
+    public var closeBlock: (() -> Void)?
+    
+    public init(mode: TransitionMode = .right, closeBlock: (() -> Void)? = nil) {
         self.mode = mode
+        self.closeBlock = closeBlock
         if TransitionConfig.transitionMode != mode {
             TransitionConfig.transitionMode = mode
         }
@@ -38,7 +41,9 @@ open class FilterTransition: NSObject, UIViewControllerTransitioningDelegate {
     }
     
     public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return FilterPresentationController(presentedViewController: presented, presenting: presenting)
+        let vc = FilterPresentationController(presentedViewController: presented, presenting: presenting)
+        vc.closeBlock = closeBlock
+        return vc
     }
     
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

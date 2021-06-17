@@ -1,6 +1,6 @@
 {
   "name": "SwiftModules",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "summary": "关于iOS Swift的一些模块私有库.",
   "description": "Include \"分类，网络请求，工具方法\", Support the Objective - C language.",
   "homepage": "https://github.com/aichiko0225/SwiftModules",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/aichiko0225/SwiftModules.git",
-    "tag": "0.1.0"
+    "tag": "0.2.0"
   },
   "social_media_url": "https://github.com/aichiko0225",
   "platforms": {
@@ -86,7 +86,7 @@
 
         ],
         "RxSwift": [
-          "~> 5.0"
+
         ]
       }
     },

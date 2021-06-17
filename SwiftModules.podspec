@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SwiftModules'
-  s.version          = '0.1.0'
+  s.version          = '0.2.0'
   s.summary          = '关于iOS Swift的一些模块私有库.'
 
 # This description is used to generate tags and improve search results.
@@ -60,7 +60,7 @@ Pod::Spec.new do |s|
   s.subspec "Services_Rx" do |ss|
     ss.source_files = "SwiftModules/Services_Rx/*.swift"
     ss.dependency "SwiftModules/Services"
-    ss.dependency "RxSwift", "~> 5.0"
+    ss.dependency "RxSwift"
   end
 
   # RxComponents
@@ -104,5 +104,5 @@ Pod::Spec.new do |s|
   # MBProgressHUD - HUD显示
   s.dependency 'MBProgressHUD'
   # Logger
-  s.dependency 'SwiftyBeaver'
+  s.dependency 'SwiftyBeaver' # , :configurations => ['Debug']
 end

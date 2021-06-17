@@ -35,7 +35,12 @@ public extension UIView {
     
     //显示等待消息
     @discardableResult
-    func showText(_ title: String?, afterDelay delay: TimeInterval = 1.5, position: ToastPosition = .center) -> MBProgressHUD {
+    func showText(
+        _ title: String?,
+        afterDelay delay: TimeInterval = 1.5,
+        position: ToastPosition = .center,
+        completion: MBProgressHUDCompletionBlock? = nil
+    ) -> MBProgressHUD {
         hud?.removeFromSuperview()
         hud = MBProgressHUD.showAdded(to: self, animated: true)
         hud?.mode = .text
@@ -49,6 +54,7 @@ public extension UIView {
         hud?.minSize = CGSize(width: 150, height: 0)
         hud?.removeFromSuperViewOnHide = true
         hud?.hide(animated: true, afterDelay: delay)
+        hud?.completionBlock = completion
         if title.isNilOrEmpty {
             hud?.removeFromSuperview()
         }
@@ -60,8 +66,6 @@ public extension UIView {
         }
         return hud!
     }
-    
-    
     
     @discardableResult
     func showLoading(_ title: String? = nil) -> MBProgressHUD {
@@ -84,8 +88,13 @@ public extension UIView {
 public extension UIViewController {
     
     @discardableResult
-    func showText(_ title: String?, afterDelay delay: TimeInterval = 1.5, position: UIView.ToastPosition = .center) -> MBProgressHUD {
-       return view.showText(title, afterDelay: delay, position: position)
+    func showText(
+        _ title: String?,
+        afterDelay delay: TimeInterval = 1.5,
+        position: UIView.ToastPosition = .center,
+        completion: MBProgressHUDCompletionBlock? = nil
+    ) -> MBProgressHUD {
+       return view.showText(title, afterDelay: delay, position: position, completion: completion)
     }
     
     @discardableResult
